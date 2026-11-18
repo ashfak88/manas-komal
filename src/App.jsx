@@ -263,106 +263,109 @@ function FloatingPetals({ count = 14, burst = false }) {
 }
 
 const WEDDING_DATA = {
-  bride: {
-    name: "Priyanka",
-    fullName: "Priyanka Prakash Kadam",
-    parents: {
-      father: "Prakash Baburao Kadam",
-      mother: "Asha Prakash Kadam",
-    },
-    line: "Daughter of Mr. Prakash Baburao Kadam & Mrs. Asha Prakash Kadam",
-    image: "/images/bride.png",
-  },
   groom: {
-    name: "Aniket",
-    fullName: "Aniket Deepak Vaidi",
+    name: "Manas",
+    fullName: "Manas Patil",
     parents: {
-      father: "Deepak Hiranna Vaidi",
-      mother: "Vijayashree Deepak Vaidi",
+      father: "Prof. Gopal Patil",
+      mother: "Mrs. Kalpana Patil",
     },
-    line: "Son of Mr. Deepak Hiranna Vaidi & Mrs. Vijayashree Deepak Vaidi",
+    line: "Son of Prof. Gopal Patil & Mrs. Kalpana Patil",
     image: "/images/groom.png",
   },
-  dateISO: "2026-12-05T08:56:00+05:30",
-  endISO: "2026-12-05T14:00:00+05:30",
-  dateLabel: "Saturday, 5 December 2026",
-  timeLabel: "8:56 AM onwards",
-  muhurthamLabel: "Muhurtham · 8:56 AM",
-  venue: {
-    name: "Sea Royal Cafe",
-    address: "Sea Royal Cafe, Navapur Beach, Virar West, 401303",
-    mapUrl:
-      "https://maps.google.com/maps/place//data=!4m2!3m1!1s0x3be7ab692bc5e96b:0x4c3263e61434233d?entry=s&sa=X&ved=2ahUKEwjroczKyYyYAxUO1zgGHYs6JG4Q4kB6BAgeEAA&hl=en",
+  bride: {
+    name: "Komal",
+    fullName: "Komal Chaudhari",
+    parents: {
+      father: "Dyaneshwar Chaudhari",
+      mother: "Mangala Chaudhari",
+    },
+    line: "Daughter of Mr. Dyaneshwar Chaudhari & Mrs. Mangala Chaudhari",
+    image: "/images/bride.png",
   },
-  functions: [
+  dateISO: "2026-12-03T07:30:00+05:30",
+  endISO: "2026-12-03T15:00:00+05:30",
+  dateLabel: "02 – 03 December 2026",
+  muhurthamDateLabel: "Thursday, 3 December 2026",
+  timeLabel: "Wedding Celebrations · 2 Days",
+  muhurthamLabel: "The Sacred Union · 7:30 AM",
+  venue: {
+    name: "Miwa Banquets",
+    address: "Miwa Banquets, Wakad, Pune, Maharashtra",
+    mapUrl: "https://maps.app.goo.gl/mBraodxMrpCRErxb6?g_st=iw",
+  },
+  days: [
     {
-      id: "priyanka-haldi",
-      name: "Priyanka Haldi",
-      subtitle: "Ghar ki Haldi",
-      icon: IconSun,
-      date: "3rd Dec 2026",
-      day: "Thursday",
-      time: "7:00 PM onwards",
-      venue: "C-703, Rashmi Lakeview, Achole Road, Nallasopara East",
-      dressTheme: {
-        couple: "Yellow / White + Florals",
-        guests: "White & Pastels",
-      },
+      dayNumber: "Day 1",
+      dateLabel: "Wednesday, 02 December 2026",
+      events: [
+        {
+          id: "d1-e1",
+          name: "The Auspicious Beginning",
+          subtitle: "Event 1",
+          time: "07:30 AM",
+          icon: IconSun,
+          venue: "Miwa Banquets, Wakad, Pune",
+        },
+        {
+          id: "d1-e2",
+          name: "The Yellow Affair",
+          subtitle: "Event 2 · Haldi Ceremony",
+          time: "10:30 AM",
+          icon: IconSun,
+          venue: "Miwa Banquets, Wakad, Pune",
+          theme: "Yellow & Festive Pastels",
+        },
+        {
+          id: "d1-e3",
+          name: "Shimmer & Shenanigans",
+          subtitle: "Event 3 · Sangeet & Celebration",
+          time: "05:30 PM",
+          icon: IconMusic,
+          venue: "Miwa Banquets, Wakad, Pune",
+          theme: "Glamour, Glitz & Festive Indian Wear",
+        },
+      ],
     },
     {
-      id: "couple-haldi",
-      name: "Bride & Groom Haldi",
-      subtitle: "Phoolowali Haldi",
-      icon: IconSun,
-      date: "4th Dec 2026",
-      day: "Friday",
-      time: "12:00 PM onwards",
-      venue: "Sea Royal Cafe, Navapur Beach, Virar West",
-      dressTheme: {
-        guests: "White & Pastels",
-      },
-    },
-    {
-      id: "sangeet",
-      name: "Sangeet Ceremony",
-      subtitle: "Musical Night",
-      icon: IconMusic,
-      date: "4th Dec 2026",
-      day: "Friday",
-      time: "7:00 PM onwards",
-      venue: "Sea Royal Cafe, Navapur Beach, Virar West",
-      dressTheme: {
-        couple: "Glamorous coordinated outfits",
-        guests: "Jewel Tones, Black, Metallics & Festive Indian Wear",
-      },
-    },
-    {
-      id: "wedding",
-      name: "Wedding Ceremony",
-      subtitle: "The Sacred Muhurtham",
-      icon: IconHeart,
-      date: "5th Dec 2026",
-      day: "Saturday",
-      time: "8:56 AM (Muhurtham)",
-      venue: "Sea Royal Cafe, Navapur Beach, Virar West 401303",
-      mapUrl:
-        "https://maps.google.com/maps/place//data=!4m2!3m1!1s0x3be7ab692bc5e96b:0x4c3263e61434233d?entry=s&sa=X&ved=2ahUKEwjroczKyYyYAxUO1zgGHYs6JG4Q4kB6BAgeEAA&hl=en",
-      highlight: true,
-    },
-    {
-      id: "reception",
-      name: "Reception Ceremony",
-      subtitle: "Celebration & Blessings",
-      icon: IconSparkles,
-      date: "5th Dec 2026",
-      day: "Saturday",
-      time: "6:30 PM onwards",
-      venue: "Sea Royal Cafe, Navapur Beach, Virar West",
-      mapUrl:
-        "https://maps.google.com/maps/place//data=!4m2!3m1!1s0x3be7ab692bc5e96b:0x4c3263e61434233d?entry=s&sa=X&ved=2ahUKEwjroczKyYyYAxUO1zgGHYs6JG4Q4kB6BAgeEAA&hl=en",
+      dayNumber: "Day 2",
+      dateLabel: "Thursday, 03 December 2026",
+      events: [
+        {
+          id: "d2-e1",
+          name: "The Sacred Union",
+          subtitle: "Event 1 · Auspicious Wedding Muhurtham",
+          time: "07:30 AM",
+          icon: IconHeart,
+          venue: "Miwa Banquets, Wakad, Pune",
+          highlight: true,
+        },
+        {
+          id: "d2-e2",
+          name: "The Royal Procession",
+          subtitle: "Event 2 · Baraat & Welcome",
+          time: "11:00 AM",
+          icon: IconSparkles,
+          venue: "Miwa Banquets, Wakad, Pune",
+        },
+        {
+          id: "d2-e3",
+          name: "The Forever Vows",
+          subtitle: "Event 3 · Pheras & Reception",
+          time: "12:30 PM",
+          icon: IconHeart,
+          venue: "Miwa Banquets, Wakad, Pune",
+          highlight: true,
+        },
+      ],
     },
   ],
-  contacts: ["8806901483", "9028234119"],
+  rsvps: [
+    { name: "Prof. Gopal Mansingh Patil", phone: "7350182082" },
+    { name: "Mrs. Kalpana Gopal Patil", phone: "7798426237" },
+    { name: "Mr. Siddharth ji Sainath Kunden", phone: "9970039397" },
+    { name: "Dr. Darshana Siddharth Kunden", phone: "9503279701" },
+  ],
 };
 
 function HeroSection() {
@@ -408,7 +411,7 @@ function HeroSection() {
             transition={{ delay: 0.2, duration: 0.9 }}
             className="text-gold-soft/90 text-xs tracking-[0.45em] uppercase font-light mb-16 sm:mb-20 -mt-6 sm:-mt-8"
           >
-            Together with their families
+            Together with the Patil family
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
@@ -429,7 +432,7 @@ function HeroSection() {
                 textShadow: "0 2px 20px rgba(212, 175, 55, 0.25)",
               }}
             >
-              {WEDDING_DATA.bride.name}
+              {WEDDING_DATA.groom.name}
             </span>
             <span
               className="text-gold/85 my-1"
@@ -449,7 +452,7 @@ function HeroSection() {
                 textShadow: "0 2px 20px rgba(212, 175, 55, 0.25)",
               }}
             >
-              {WEDDING_DATA.groom.name}
+              {WEDDING_DATA.bride.name}
             </span>
           </motion.h1>
           <motion.div
@@ -462,9 +465,9 @@ function HeroSection() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.15, duration: 0.9 }}
-            className="text-ivory mt-6 text-base tracking-[0.4em] uppercase font-medium"
+            className="text-ivory mt-6 text-base tracking-[0.25em] uppercase font-medium"
           >
-            05 · 12 · 2026
+            2&3 DECEMBER · 2026
           </motion.p>
           <motion.p
             initial={{ opacity: 0 }}
@@ -472,7 +475,7 @@ function HeroSection() {
             transition={{ delay: 1.35, duration: 0.9 }}
             className="text-ivory/70 mt-2 text-xs tracking-[0.28em] uppercase"
           >
-            Saturday · Sea Royal Cafe, Virar
+            Miwa Banquets · Wakad, Pune
           </motion.p>
         </motion.div>
       </div>
@@ -615,37 +618,76 @@ function PersonCard({ person, role }) {
 function CoupleSection() {
   return (
     <section className="relative overflow-hidden px-5 py-20">
-      <img
-        src="/images/floral-corner.png"
-        alt=""
-        aria-hidden="true"
-        loading="lazy"
-        className="pointer-events-none absolute -top-6 -left-10 w-44 opacity-40"
-      />
-      <img
-        src="/images/floral-corner.png"
-        alt=""
-        aria-hidden="true"
-        loading="lazy"
-        className="pointer-events-none absolute -right-10 -bottom-6 w-44 rotate-180 opacity-40"
-      />
       <div className="relative mx-auto max-w-md">
         <FadeIn className="text-center">
           <SectionDivider label="The Couple" />
           <h2 className="text-primary mt-5 text-4xl font-light">Two Hearts, One Journey</h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xs text-sm leading-relaxed">
-            With the blessings of our beloved parents and families, we take the sacred vows of love, trust, and companionship.
+            Prof. Gopal Patil & Mrs. Kalpana Patil cordially invite you to celebrate the wedding of their son with love and joy.
           </p>
         </FadeIn>
+
+        {/* Beautiful Ornate Archival Couple Portrait with Floral Corner Accent */}
+        <FadeIn delay={0.1} className="mt-9">
+          <div className="relative mx-auto max-w-[340px] sm:max-w-[360px]">
+            {/* Elegant Floral Cluster at Top Right overlapping frame */}
+            <motion.img
+              src="/images/floral-corner.png"
+              alt=""
+              aria-hidden="true"
+              className="pointer-events-none absolute -top-8 -right-8 z-20 w-32 sm:w-36 drop-shadow-md select-none"
+              initial={{ opacity: 0, scale: 0.8, rotate: 10 }}
+              animate={{ opacity: 0.95, scale: 1, rotate: 0 }}
+              transition={{ delay: 0.25, duration: 0.9 }}
+            />
+
+            {/* Inner Gold Inset Frame on Photo */}
+            <div className="relative overflow-hidden rounded-[2.25rem] border-2 border-gold/45 p-1.5 bg-gradient-to-tr from-[#C5A059] via-[#F9E8B2] to-[#D4AF37] shadow-luxe">
+              <div className="relative overflow-hidden rounded-[2rem] bg-emerald-ink">
+                <img
+                  src="/images/couple.jpg"
+                  alt="Manas and Komal"
+                  className="h-[400px] sm:h-[440px] w-full object-cover object-top transition-transform duration-700 hover:scale-105"
+                />
+                
+                {/* Thin Inner Golden Inset Border for Archival Look */}
+                <div className="pointer-events-none absolute inset-3 rounded-[1.5rem] border border-gold/35 shadow-[inset_0_0_15px_rgba(0,0,0,0.35)]" />
+
+                {/* Subtle romantic vignette at bottom */}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-emerald-ink/90 via-transparent to-black/15" />
+                
+                {/* Overlay names badge */}
+                <div className="absolute inset-x-0 bottom-0 p-5 text-center">
+                  <div className="inline-flex items-center justify-center gap-2 mb-1">
+                    <span className="rule-gold w-6 opacity-75" />
+                    <span className="text-gold-soft text-[0.62rem] tracking-[0.35em] uppercase font-semibold">
+                      Forever Begins
+                    </span>
+                    <span className="rule-gold w-6 opacity-75" />
+                  </div>
+                  <h3
+                    className="text-ivory mt-1 text-2xl sm:text-[1.75rem] font-light tracking-wide drop-shadow-sm"
+                    style={{ fontFamily: "'Cinzel Decorative', serif" }}
+                  >
+                    {WEDDING_DATA.groom.name}{" "}
+                    <span className="text-gold font-normal" style={{ fontFamily: "'Alex Brush', cursive" }}>&</span>{" "}
+                    {WEDDING_DATA.bride.name}
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </FadeIn>
+
         <div className="mt-10 space-y-8">
           <ParallaxWrap speed={26}>
-            <PersonCard person={WEDDING_DATA.bride} role="The Bride" />
+            <PersonCard person={WEDDING_DATA.groom} role="The Groom" />
           </ParallaxWrap>
           <div className="flex justify-center">
             <span className="font-script text-gold animate-float-soft text-5xl">&</span>
           </div>
           <ParallaxWrap speed={-26}>
-            <PersonCard person={WEDDING_DATA.groom} role="The Groom" />
+            <PersonCard person={WEDDING_DATA.bride} role="The Bride" />
           </ParallaxWrap>
         </div>
       </div>
@@ -727,7 +769,7 @@ function CountdownSection() {
         </FadeIn>
         <FadeIn delay={0.2}>
           <p className="text-ivory/65 mt-6 text-xs tracking-[0.25em] uppercase font-light">
-            {WEDDING_DATA.dateLabel} · 8:56 AM
+            {WEDDING_DATA.muhurthamDateLabel} · 07:30 AM
           </p>
         </FadeIn>
       </div>
@@ -743,7 +785,7 @@ function downloadIcsCalendar() {
   const icsData = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//Aniket & Priyanka Wedding//EN",
+    "PRODID:-//Manas & Komal Wedding//EN",
     "BEGIN:VEVENT",
     `UID:${Date.now()}@wedding`,
     `DTSTAMP:${formatIcsDate(new Date().toISOString())}`,
@@ -751,7 +793,7 @@ function downloadIcsCalendar() {
     `DTEND:${formatIcsDate(WEDDING_DATA.endISO)}`,
     `SUMMARY:${WEDDING_DATA.groom.name} & ${WEDDING_DATA.bride.name} Wedding`,
     `LOCATION:${WEDDING_DATA.venue.name}, ${WEDDING_DATA.venue.address}`,
-    `DESCRIPTION:Together with their families, Aniket & Priyanka invite you to celebrate their wedding ceremony at Sea Royal Cafe, Navapur Beach, Virar West.`,
+    `DESCRIPTION:Together with the Patil family, Manas & Komal invite you to celebrate their wedding ceremonies at Miwa Banquets, Wakad, Pune.`,
     "END:VEVENT",
     "END:VCALENDAR",
   ].join("\r\n");
@@ -760,7 +802,7 @@ function downloadIcsCalendar() {
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
-  link.download = `aniket-priyanka-wedding.ics`;
+  link.download = `manas-komal-wedding.ics`;
   link.click();
   URL.revokeObjectURL(url);
 }
@@ -821,195 +863,181 @@ function FunctionsSection() {
             Functions & Events
           </h2>
           <p className="text-muted-foreground mx-auto mt-2 max-w-sm text-sm">
-            Join us in the celebrations and rituals leading to our big day.
+            Join us in the celebrations and rituals across our two joyful days.
           </p>
         </FadeIn>
 
-        <div className="mt-10 space-y-16 sm:space-y-20">
-          {WEDDING_DATA.functions.map((fn, idx) => {
-            const Icon = fn.icon;
-            const isWedding = fn.highlight;
-            return (
-              <motion.div
-                key={fn.id}
-                variants={revealVariants}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.25, margin: "0px 0px -40px 0px" }}
-                transition={{ delay: idx * 0.08 }}
-                className="mb-6 sm:mb-8"
-                onViewportEnter={() => {
-                  if (isWedding && !blastTriggered.current) {
-                    blastTriggered.current = true;
-                    // Trigger festive popper blast when wedding card enters viewport
-                    triggerWeddingPopperBlast();
-                  }
-                }}
-              >
-                <div
-                  className={`bg-[#FAF7F0] shadow-luxe overflow-hidden rounded-[2rem] border transition-all duration-300 ${
-                    isWedding
-                      ? "border-gold/70 ring-2 ring-gold/40 shadow-gold"
-                      : "border-gold/35 hover:border-gold/55"
-                  }`}
-                >
-                  {/* Top Bar with Title, Date and Time Badge */}
-                  <div
-                    style={{
-                      padding: "18px 20px",
-                      borderBottom: "1px solid rgba(212, 175, 55, 0.25)",
-                      background: isWedding
-                        ? "linear-gradient(135deg, oklch(33% 0.072 158), oklch(21.5% 0.05 160))"
-                        : "rgba(235, 230, 218, 0.45)",
-                    }}
-                  >
-                    <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "10px" }}>
-                      <div style={{ display: "flex", alignItems: "flex-start", gap: "12px", minWidth: 0, flex: 1 }}>
-                        <span
-                          style={{
-                            display: "grid",
-                            placeItems: "center",
-                            width: "42px",
-                            height: "42px",
-                            minWidth: "42px",
-                            borderRadius: "50%",
-                            border: isWedding ? "1px solid rgba(212, 175, 55, 0.4)" : "1px solid rgba(212, 175, 55, 0.3)",
-                            backgroundColor: isWedding ? "rgba(212, 175, 55, 0.2)" : "rgba(33, 50, 40, 0.08)",
-                            color: isWedding ? "var(--gold-soft)" : "var(--primary)",
-                            marginTop: "2px",
-                          }}
-                        >
-                          <Icon className="h-5 w-5" />
-                        </span>
-                        <div style={{ minWidth: 0, flex: 1 }}>
-                          <h3
-                            style={{
-                              fontFamily: "Cormorant Garamond, serif",
-                              fontSize: "1.35rem",
-                              fontWeight: 600,
-                              lineHeight: 1.2,
-                              color: isWedding ? "#FAF7F0" : "var(--primary)",
-                              margin: 0,
-                            }}
-                          >
-                            {fn.name}
-                          </h3>
-                          {fn.subtitle && (
-                            <p
-                              style={{
-                                fontFamily: "'Alex Brush', cursive",
-                                fontSize: "1.15rem",
-                                color: isWedding ? "var(--gold-soft)" : "var(--gold)",
-                                margin: "2px 0 0 0",
-                                lineHeight: 1.1,
-                                whiteSpace: "nowrap",
-                              }}
-                            >
-                              ({fn.subtitle})
-                            </p>
-                          )}
-                          <p
-                            style={{
-                              fontSize: "0.68rem",
-                              letterSpacing: "0.18em",
-                              textTransform: "uppercase",
-                              fontWeight: 500,
-                              color: isWedding ? "rgba(250, 247, 240, 0.8)" : "var(--muted-foreground)",
-                              marginTop: "4px",
-                              marginBottom: 0,
-                            }}
-                          >
-                            {fn.day} · {fn.date}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div style={{ flexShrink: 0, marginTop: "2px" }}>
-                        <span
-                          style={{
-                            display: "inline-block",
-                            padding: "5px 12px",
-                            borderRadius: "9999px",
-                            fontSize: "0.72rem",
-                            fontWeight: 600,
-                            letterSpacing: "0.03em",
-                            whiteSpace: "nowrap",
-                            lineHeight: 1.2,
-                            backgroundColor: isWedding ? "var(--gold)" : "#FAF7F0",
-                            color: isWedding ? "var(--emerald-ink)" : "var(--primary)",
-                            border: isWedding ? "none" : "1px solid rgba(212, 175, 55, 0.35)",
-                            boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
-                          }}
-                        >
-                          {fn.time}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Body Content */}
-                  <div className="p-6 space-y-5">
-                    {/* Venue Card */}
-                    <div className="bg-white/80 border border-gold/20 rounded-2xl p-4 shadow-xs">
-                      <div className="flex items-start gap-3">
-                        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-secondary text-gold border border-gold/25 mt-0.5">
-                          <IconMapPin className="h-4 w-4" />
-                        </span>
-                        <div className="flex-1 min-w-0">
-                          <span className="text-[0.65rem] font-bold tracking-[0.25em] text-gold uppercase block">
-                            Venue
-                          </span>
-                          <p className="text-foreground text-sm font-medium mt-1 leading-relaxed">
-                            {fn.venue}
-                          </p>
-                          {fn.mapUrl && (
-                            <a
-                              href={fn.mapUrl}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="inline-flex items-center gap-1.5 text-xs text-gold hover:text-gold/80 hover:underline mt-2.5 font-semibold tracking-wide"
-                            >
-                              <IconNavigation className="h-3.5 w-3.5" /> View on Google Maps
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Dress Theme Card */}
-                    {fn.dressTheme && (
-                      <div className="bg-secondary/40 border border-gold/20 rounded-2xl p-4 shadow-xs">
-                        <div className="flex items-center gap-2.5 mb-2.5 pb-2 border-b border-gold/15">
-                          <IconShirt className="h-4 w-4 text-gold shrink-0" />
-                          <span className="text-[0.68rem] font-bold tracking-[0.25em] text-gold uppercase">
-                            Dress Code Theme
-                          </span>
-                        </div>
-                        <div className="space-y-2 text-xs pl-1">
-                          <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
-                            <span className="text-foreground font-semibold shrink-0 min-w-[105px]">
-                              Bride & Groom:
-                            </span>
-                            <span className="text-foreground/85 leading-relaxed">
-                              {fn.dressTheme.couple}
-                            </span>
-                          </div>
-                          <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
-                            <span className="text-foreground font-semibold shrink-0 min-w-[105px]">
-                              Guests:
-                            </span>
-                            <span className="text-foreground/85 leading-relaxed">
-                              {fn.dressTheme.guests}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
+        <div className="mt-12 space-y-16">
+          {WEDDING_DATA.days.map((dayGroup, groupIdx) => (
+            <div key={dayGroup.dayNumber} className="space-y-6">
+              {/* Day Badge & Date Header */}
+              <FadeIn delay={0.05}>
+                <div className="flex flex-col items-center justify-center text-center">
+                  <span className="bg-secondary/90 border border-gold/40 text-gold px-4 py-1 rounded-full text-xs font-semibold tracking-[0.25em] uppercase shadow-xs">
+                    {dayGroup.dayNumber}
+                  </span>
+                  <h3 className="text-primary font-display mt-2.5 text-2xl sm:text-3xl font-medium tracking-wide">
+                    {dayGroup.dateLabel}
+                  </h3>
+                  <div className="rule-gold mt-3 w-28 opacity-75" />
                 </div>
-              </motion.div>
-            );
-          })}
+              </FadeIn>
+
+              {/* Event Cards for this Day */}
+              <div className="space-y-7 sm:space-y-8 pt-2">
+                {dayGroup.events.map((fn, idx) => {
+                  const Icon = fn.icon;
+                  const isWedding = fn.highlight;
+                  return (
+                    <motion.div
+                      key={fn.id}
+                      variants={revealVariants}
+                      initial="hidden"
+                      whileInView="show"
+                      viewport={{ once: true, amount: 0.25, margin: "0px 0px -40px 0px" }}
+                      transition={{ delay: idx * 0.08 }}
+                      onViewportEnter={() => {
+                        if (isWedding && !blastTriggered.current) {
+                          blastTriggered.current = true;
+                          // Trigger festive popper blast when wedding ceremony card enters viewport
+                          triggerWeddingPopperBlast();
+                        }
+                      }}
+                    >
+                      <div
+                        className={`bg-[#FAF7F0] shadow-luxe overflow-hidden rounded-[2rem] border transition-all duration-300 ${
+                          isWedding
+                            ? "border-gold/70 ring-2 ring-gold/40 shadow-gold"
+                            : "border-gold/45 hover:border-gold/65"
+                        }`}
+                      >
+                        {/* Top Bar with Consistent Emerald Deep Luxury Gradient on All Cards */}
+                        <div
+                          style={{
+                            padding: "18px 20px",
+                            borderBottom: "1px solid rgba(212, 175, 55, 0.35)",
+                            background: "linear-gradient(135deg, oklch(33% 0.072 158), oklch(21.5% 0.05 160))",
+                          }}
+                        >
+                          <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "10px" }}>
+                            <div style={{ display: "flex", alignItems: "flex-start", gap: "12px", minWidth: 0, flex: 1 }}>
+                              <span
+                                style={{
+                                  display: "grid",
+                                  placeItems: "center",
+                                  width: "42px",
+                                  height: "42px",
+                                  minWidth: "42px",
+                                  borderRadius: "50%",
+                                  border: "1px solid rgba(212, 175, 55, 0.4)",
+                                  backgroundColor: "rgba(212, 175, 55, 0.2)",
+                                  color: "var(--gold-soft)",
+                                  marginTop: "2px",
+                                }}
+                              >
+                                <Icon className="h-5 w-5" />
+                              </span>
+                              <div style={{ minWidth: 0, flex: 1 }}>
+                                <h3
+                                  style={{
+                                    fontFamily: "Cormorant Garamond, serif",
+                                    fontSize: "1.35rem",
+                                    fontWeight: 600,
+                                    lineHeight: 1.2,
+                                    color: "#FAF7F0",
+                                    margin: 0,
+                                  }}
+                                >
+                                  {fn.name}
+                                </h3>
+                                {fn.subtitle && (
+                                  <p
+                                    style={{
+                                      fontFamily: "'Alex Brush', cursive",
+                                      fontSize: "1.15rem",
+                                      color: "var(--gold-soft)",
+                                      margin: "2px 0 0 0",
+                                      lineHeight: 1.1,
+                                      whiteSpace: "nowrap",
+                                    }}
+                                  >
+                                    ({fn.subtitle})
+                                  </p>
+                                )}
+                              </div>
+                            </div>
+
+                            <div style={{ flexShrink: 0, marginTop: "2px" }}>
+                              <span
+                                style={{
+                                  display: "inline-block",
+                                  padding: "5px 12px",
+                                  borderRadius: "9999px",
+                                  fontSize: "0.72rem",
+                                  fontWeight: 600,
+                                  letterSpacing: "0.03em",
+                                  whiteSpace: "nowrap",
+                                  lineHeight: 1.2,
+                                  backgroundColor: "var(--gold)",
+                                  color: "var(--emerald-ink)",
+                                  boxShadow: "0 1px 3px rgba(0,0,0,0.15)",
+                                }}
+                              >
+                                {fn.time}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Body Content */}
+                        <div className="p-6 space-y-4">
+                          {/* Venue Card */}
+                          <div className="bg-white/80 border border-gold/20 rounded-2xl p-4 shadow-xs">
+                            <div className="flex items-start gap-3">
+                              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-secondary text-gold border border-gold/25 mt-0.5">
+                                <IconMapPin className="h-4 w-4" />
+                              </span>
+                              <div className="flex-1 min-w-0">
+                                <span className="text-[0.65rem] font-bold tracking-[0.25em] text-gold uppercase block">
+                                  Venue
+                                </span>
+                                <p className="text-foreground text-sm font-medium mt-1 leading-relaxed">
+                                  {fn.venue}
+                                </p>
+                                <a
+                                  href={WEDDING_DATA.venue.mapUrl}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="inline-flex items-center gap-1.5 text-xs text-gold hover:text-gold/80 hover:underline mt-2.5 font-semibold tracking-wide"
+                                >
+                                  <IconNavigation className="h-3.5 w-3.5" /> View on Google Maps
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Theme Card if specified */}
+                          {fn.theme && (
+                            <div className="bg-secondary/40 border border-gold/20 rounded-2xl p-3.5 shadow-xs">
+                              <div className="flex items-center gap-2">
+                                <IconShirt className="h-4 w-4 text-gold shrink-0" />
+                                <span className="text-[0.65rem] font-bold tracking-[0.2em] text-gold uppercase">
+                                  Theme / Dress Code:
+                                </span>
+                                <span className="text-foreground text-xs font-medium">
+                                  {fn.theme}
+                                </span>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -1040,13 +1068,13 @@ function CelebrationSection() {
                 Save the date
               </p>
               <p className="text-ivory font-display mt-2 text-5xl font-light">
-                05
+                02 · 03
               </p>
               <p className="text-ivory/85 text-sm tracking-[0.35em] uppercase">
                 December 2026
               </p>
               <p className="text-gold/90 text-xs tracking-[0.25em] uppercase mt-1 font-light">
-                Saturday · 8:56 AM
+                The Sacred Union · 07:30 AM
               </p>
             </div>
             <div className="divide-gold/15 divide-y">
@@ -1118,22 +1146,31 @@ function CelebrationSection() {
             <div className="flex items-center justify-center gap-2 text-gold mb-2">
               <IconPhone className="h-4 w-4" />
               <span className="text-[0.65rem] tracking-[0.35em] uppercase font-semibold">
-                Contact & RSVP
+                RSVP & Contacts
               </span>
             </div>
             <p className="text-xs text-muted-foreground">
-              For any assistance, travel guidance or queries, please reach out to:
+              Please feel free to connect with us for any assistance or travel guidance:
             </p>
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
-              {WEDDING_DATA.contacts.map((num) => (
-                <a
-                  key={num}
-                  href={`tel:${num}`}
-                  className="bg-secondary/60 hover:bg-secondary border border-gold/30 text-foreground px-4 py-2 rounded-full text-xs font-medium tracking-wider inline-flex items-center gap-2 transition-colors"
+            <div className="mt-5 space-y-2.5">
+              {WEDDING_DATA.rsvps.map((rsvp) => (
+                <div
+                  key={rsvp.phone}
+                  className="bg-secondary/60 hover:bg-secondary/90 border border-gold/30 text-foreground px-4 py-2.5 rounded-2xl flex items-center justify-between gap-3 transition-colors"
                 >
-                  <IconPhone className="h-3 w-3 text-gold" />
-                  +91 {num}
-                </a>
+                  <div className="text-left min-w-0">
+                    <p className="text-xs font-semibold text-foreground truncate">
+                      {rsvp.name}
+                    </p>
+                  </div>
+                  <a
+                    href={`tel:${rsvp.phone}`}
+                    className="bg-primary/10 hover:bg-primary/20 text-primary px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider inline-flex items-center gap-1.5 shrink-0 border border-gold/25"
+                  >
+                    <IconPhone className="h-3 w-3 text-gold" />
+                    {rsvp.phone}
+                  </a>
+                </div>
               ))}
             </div>
           </div>
@@ -1184,12 +1221,12 @@ function FooterSection() {
           <div className="mt-9 flex flex-col items-center">
             <span className="rule-gold w-28" />
             <p className="text-ivory mt-6 text-3xl sm:text-4xl font-light" style={{ fontFamily: "'Cinzel Decorative', serif" }}>
-              {WEDDING_DATA.bride.name}{" "}
+              {WEDDING_DATA.groom.name}{" "}
               <span className="text-gold" style={{ fontFamily: "'Alex Brush', cursive" }}>&</span>{" "}
-              {WEDDING_DATA.groom.name}
+              {WEDDING_DATA.bride.name}
             </p>
-            <p className="text-ivory/50 mt-2 text-[0.6rem] tracking-[0.4em] uppercase">
-              05 · 12 · 2026 · Virar
+            <p className="text-ivory/50 mt-2 text-[0.65rem] tracking-[0.25em] uppercase">
+              DECEMBER 2 & 3 · 2026 · WAKAD, PUNE
             </p>
           </div>
         </FadeIn>
@@ -1253,9 +1290,9 @@ function EnvelopeOpener({ onOpen }) {
               A wedding invitation
             </span>
             <h1 className="text-gold-foil mt-5 text-4xl sm:text-5xl leading-tight font-light" style={{ fontFamily: "'Cinzel Decorative', serif" }}>
-              {WEDDING_DATA.bride.name}
-              <span className="text-gold/80 mx-2 text-2xl sm:text-3xl" style={{ fontFamily: "'Alex Brush', cursive" }}>&</span>
               {WEDDING_DATA.groom.name}
+              <span className="text-gold/80 mx-2 text-2xl sm:text-3xl" style={{ fontFamily: "'Alex Brush', cursive" }}>&</span>
+              {WEDDING_DATA.bride.name}
             </h1>
             <span className="rule-gold mt-6 w-32" />
             <motion.button
@@ -1290,9 +1327,9 @@ function EnvelopeOpener({ onOpen }) {
                 }}
               >
                 <span className="font-medium text-emerald-ink text-2xl tracking-normal flex items-center justify-center" style={{ fontFamily: "'Cinzel Decorative', serif" }}>
-                  <span>{WEDDING_DATA.bride.name[0]}</span>
-                  <span className="text-base mx-0.5 opacity-75" style={{ fontFamily: "'Alex Brush', cursive" }}>&</span>
                   <span>{WEDDING_DATA.groom.name[0]}</span>
+                  <span className="text-base mx-0.5 opacity-75" style={{ fontFamily: "'Alex Brush', cursive" }}>&</span>
+                  <span>{WEDDING_DATA.bride.name[0]}</span>
                 </span>
               </motion.span>
             </motion.button>
