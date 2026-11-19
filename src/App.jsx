@@ -325,7 +325,6 @@ const WEDDING_DATA = {
         {
           id: "d1-e2",
           name: "The Yellow Affair",
-          subtitle: "Haldi Ceremony",
           time: "10:30 AM",
           icon: IconSun,
           venue: "Miwa Banquets, Wakad, Pune",
@@ -334,7 +333,6 @@ const WEDDING_DATA = {
         {
           id: "d1-e3",
           name: "Shimmer & Shenanigans",
-          subtitle: "Sangeet & Celebration",
           time: "05:30 PM",
           icon: IconMusic,
           venue: "Miwa Banquets, Wakad, Pune",
@@ -349,7 +347,6 @@ const WEDDING_DATA = {
         {
           id: "d2-e1",
           name: "The Sacred Union",
-          subtitle: "Auspicious Wedding Muhurtham",
           time: "07:30 AM",
           icon: IconHeart,
           venue: "Miwa Banquets, Wakad, Pune",
@@ -359,7 +356,6 @@ const WEDDING_DATA = {
         {
           id: "d2-e2",
           name: "The Royal Procession",
-          subtitle: "Baraat & Welcome",
           time: "11:00 AM",
           icon: IconSparkles,
           venue: "Miwa Banquets, Wakad, Pune",
@@ -368,7 +364,6 @@ const WEDDING_DATA = {
         {
           id: "d2-e3",
           name: "The Forever Vows",
-          subtitle: "Pheras & Reception",
           time: "12:30 PM",
           icon: IconHeart,
           venue: "Miwa Banquets, Wakad, Pune",
