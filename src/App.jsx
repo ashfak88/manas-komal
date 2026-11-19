@@ -178,6 +178,18 @@ const IconShirt = createIcon("shirt", [
   ],
 ]);
 
+const IconVolume2 = createIcon("volume-2", [
+  ["polygon", { points: "11 5 6 9 2 9 2 15 6 15 11 19 11 5", key: "148f3p" }],
+  ["path", { d: "M15.54 8.46a5 5 0 0 1 0 7.07", key: "148f3q" }],
+  ["path", { d: "M19.07 4.93a10 10 0 0 1 0 14.14", key: "148f3r" }],
+]);
+
+const IconVolumeX = createIcon("volume-x", [
+  ["polygon", { points: "11 5 6 9 2 9 2 15 6 15 11 19 11 5", key: "148f3s" }],
+  ["line", { x1: "22", x2: "16", y1: "9", y2: "15", key: "148f3t" }],
+  ["line", { x1: "16", x2: "22", y1: "9", y2: "15", key: "148f3u" }],
+]);
+
 function AuroraBackground({ className = "", intensity = 1 }) {
   return (
     <div
@@ -272,6 +284,7 @@ const WEDDING_DATA = {
     },
     line: "Son of Prof. Gopal Patil & Mrs. Kalpana Patil",
     image: "/images/groom.png",
+    bio: "An SAP professional by day, an explorer by heart, and a chai enthusiast always.",
   },
   bride: {
     name: "Komal",
@@ -282,27 +295,28 @@ const WEDDING_DATA = {
     },
     line: "Daughter of Mr. Dyaneshwar Chaudhari & Mrs. Mangala Chaudhari",
     image: "/images/bride.png",
+    bio: "An MBA graduate and professional chef, who loves exploring new places, hosting loved ones, and serving happiness one plate at a time.",
   },
   dateISO: "2026-12-03T07:30:00+05:30",
   endISO: "2026-12-03T15:00:00+05:30",
-  dateLabel: "02 – 03 December 2026",
+  dateLabel: "02-03 Dec 2026",
   muhurthamDateLabel: "Thursday, 3 December 2026",
   timeLabel: "Wedding Celebrations · 2 Days",
   muhurthamLabel: "The Sacred Union · 7:30 AM",
   venue: {
     name: "Miwa Banquets",
     address: "Miwa Banquets, Wakad, Pune, Maharashtra",
+    tagline: "No hassle, all celebrations under one roof - MIWA Banquets, Wakad, Pune",
     mapUrl: "https://maps.app.goo.gl/mBraodxMrpCRErxb6?g_st=iw",
   },
   days: [
     {
       dayNumber: "Day 1",
-      dateLabel: "Wednesday, 02 December 2026",
+      dateLabel: "Wednesday, 02 Dec 2026",
       events: [
         {
           id: "d1-e1",
           name: "The Auspicious Beginning",
-          subtitle: "Event 1",
           time: "07:30 AM",
           icon: IconSun,
           venue: "Miwa Banquets, Wakad, Pune",
@@ -310,7 +324,7 @@ const WEDDING_DATA = {
         {
           id: "d1-e2",
           name: "The Yellow Affair",
-          subtitle: "Event 2 · Haldi Ceremony",
+          subtitle: "Haldi Ceremony",
           time: "10:30 AM",
           icon: IconSun,
           venue: "Miwa Banquets, Wakad, Pune",
@@ -319,7 +333,7 @@ const WEDDING_DATA = {
         {
           id: "d1-e3",
           name: "Shimmer & Shenanigans",
-          subtitle: "Event 3 · Sangeet & Celebration",
+          subtitle: "Sangeet & Celebration",
           time: "05:30 PM",
           icon: IconMusic,
           venue: "Miwa Banquets, Wakad, Pune",
@@ -329,33 +343,36 @@ const WEDDING_DATA = {
     },
     {
       dayNumber: "Day 2",
-      dateLabel: "Thursday, 03 December 2026",
+      dateLabel: "Thursday, 03 Dec 2026",
       events: [
         {
           id: "d2-e1",
           name: "The Sacred Union",
-          subtitle: "Event 1 · Auspicious Wedding Muhurtham",
+          subtitle: "Auspicious Wedding Muhurtham",
           time: "07:30 AM",
           icon: IconHeart,
           venue: "Miwa Banquets, Wakad, Pune",
           highlight: true,
+          theme: "Traditional Ethnic Wear",
         },
         {
           id: "d2-e2",
           name: "The Royal Procession",
-          subtitle: "Event 2 · Baraat & Welcome",
+          subtitle: "Baraat & Welcome",
           time: "11:00 AM",
           icon: IconSparkles,
           venue: "Miwa Banquets, Wakad, Pune",
+          theme: "Maharashtrian Royalty",
         },
         {
           id: "d2-e3",
           name: "The Forever Vows",
-          subtitle: "Event 3 · Pheras & Reception",
+          subtitle: "Pheras & Reception",
           time: "12:30 PM",
           icon: IconHeart,
           venue: "Miwa Banquets, Wakad, Pune",
           highlight: true,
+          theme: "Vibrant Ethnic",
         },
       ],
     },
@@ -375,123 +392,190 @@ function HeroSection() {
     offset: ["start start", "end start"],
   });
   const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 24, mass: 0.4 });
-  const bgShift = useTransform(smoothProgress, [0, 1], ["0%", "22%"]);
-  const garlandShift = useTransform(smoothProgress, [0, 1], ["0%", "38%"]);
-  const textShift = useTransform(smoothProgress, [0, 1], ["0%", "50%"]);
-  const textOpacity = useTransform(smoothProgress, [0, 0.75], [1, 0]);
+  const bgShift = useTransform(smoothProgress, [0, 1], ["0%", "15%"]);
+  const garlandShift = useTransform(smoothProgress, [0, 1], ["0%", "18%"]);
+  const textShift = useTransform(smoothProgress, [0, 1], ["0%", "26%"]);
+  const coupleShift = useTransform(smoothProgress, [0, 1], ["0%", "10%"]);
+  const opacityFade = useTransform(smoothProgress, [0, 0.85], [1, 0]);
 
   return (
     <section
       ref={containerRef}
-      className="bg-emerald-deep relative flex h-[100svh] min-h-[640px] w-full flex-col items-center justify-center overflow-hidden"
+      className="relative flex h-[100svh] min-h-[620px] max-h-[900px] w-full flex-col items-center justify-between overflow-hidden"
+      style={{
+        background: "radial-gradient(circle at 50% 30%, #1a4f32 0%, #0d2e1c 55%, #06190f 100%)",
+      }}
     >
-      <AuroraBackground intensity={1} />
-      <div className="from-emerald-ink/50 via-emerald-deep/20 to-emerald-ink/90 absolute inset-0 bg-gradient-to-b" />
+      {/* Subtle background glow */}
       <motion.div
         aria-hidden="true"
         style={{
           y: bgShift,
-          background: "radial-gradient(ellipse at 50% 50%, oklch(0.93 0.05 92 / 0.45), transparent 65%)",
+          background: "radial-gradient(ellipse at 50% 35%, rgba(212, 175, 55, 0.16), transparent 70%)",
         }}
-        className="absolute inset-0 m-auto h-[70%] w-[120%] rounded-full blur-3xl"
+        className="pointer-events-none absolute inset-0 m-auto h-[60%] w-[110%] rounded-full blur-3xl"
       />
-      <FloatingPetals count={14} />
-      <motion.img
-        src="/images/garland.png"
-        alt=""
-        aria-hidden="true"
+
+      {/* Floating Petals matching theme */}
+      <FloatingPetals count={10} />
+
+      {/* Top Traditional Marigold & Mango Leaves Garland Toran across the top */}
+      <motion.div
         style={{ y: garlandShift }}
-        className="pointer-events-none absolute -top-2 left-1/2 w-[135%] max-w-none -translate-x-1/2 opacity-90"
-      />
-      <div className="relative z-10 mx-auto flex w-full max-w-md flex-1 flex-col items-center justify-center px-6 pt-10 pb-16 text-center my-auto">
-        <motion.div style={{ y: textShift, opacity: textOpacity }} className="flex flex-col items-center justify-center w-full">
-          <motion.p
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.9 }}
-            className="text-gold-soft/90 text-xs tracking-[0.45em] uppercase font-light mb-16 sm:mb-20 -mt-6 sm:-mt-8"
-          >
-            Together with the Patil family
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{
-              delay: 0.4,
-              duration: 1.1,
-              ease: [0.22, 1, 0.36, 1],
+        className="pointer-events-none absolute -top-1 sm:-top-2 left-1/2 z-20 w-[112%] sm:w-[104%] max-w-none -translate-x-1/2 select-none"
+      >
+        <img
+          src="/images/garland.png"
+          alt="Traditional wedding toran garland"
+          className="w-full drop-shadow-[0_10px_20px_rgba(0,0,0,0.45)]"
+        />
+      </motion.div>
+
+      {/* Main Content Area - Generous top padding (pt-32 sm:pt-36) so text NEVER overrides garland */}
+      <motion.div
+        style={{ y: textShift, opacity: opacityFade }}
+        className="relative z-10 mx-auto flex w-full max-w-md flex-col items-center pt-32 sm:pt-36 pb-1 text-center px-4"
+      >
+        {/* Subtitle / Invitation Line - delicate original size in clean white with subtle shadow */}
+        <motion.p
+          initial={{ opacity: 0, y: -6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+          className="text-white text-[0.6rem] sm:text-[0.65rem] tracking-[0.42em] uppercase font-light mb-3 sm:mb-4"
+          style={{
+            letterSpacing: "0.42em",
+            color: "#ffffff",
+            textShadow: "0 1px 3px rgba(0,0,0,0.7)",
+          }}
+        >
+          Together with their families
+        </motion.p>
+
+        {/* Groom & Bride Names */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.35, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col items-center"
+        >
+          <h1
+            className="text-gold-foil font-normal tracking-wide text-center"
+            style={{
+              fontFamily: "'Cinzel', serif",
+              fontSize: "clamp(2rem, 6.5vw, 2.85rem)",
+              lineHeight: 1.12,
+              filter: "drop-shadow(0 2px 14px rgba(212, 175, 55, 0.45))",
             }}
-            className="mt-6 mb-6 flex flex-col items-center"
           >
-            <span
-              className="text-gold-foil font-light tracking-wider text-center"
-              style={{
-                fontFamily: "'Cinzel Decorative', serif",
-                fontSize: "clamp(2.8rem, 11vw, 4.4rem)",
-                lineHeight: 1.15,
-                textShadow: "0 2px 20px rgba(212, 175, 55, 0.25)",
-              }}
-            >
-              {WEDDING_DATA.groom.name}
-            </span>
-            <span
-              className="text-gold/85 my-1"
-              style={{
-                fontFamily: "'Alex Brush', 'Great Vibes', cursive",
-                fontSize: "clamp(2rem, 7vw, 2.8rem)",
-              }}
-            >
-              and
-            </span>
-            <span
-              className="text-gold-foil font-light tracking-wider text-center"
-              style={{
-                fontFamily: "'Cinzel Decorative', serif",
-                fontSize: "clamp(2.8rem, 11vw, 4.4rem)",
-                lineHeight: 1.15,
-                textShadow: "0 2px 20px rgba(212, 175, 55, 0.25)",
-              }}
-            >
-              {WEDDING_DATA.bride.name}
-            </span>
-          </motion.h1>
-          <motion.div
-            initial={{ opacity: 0, scaleX: 0 }}
-            animate={{ opacity: 1, scaleX: 1 }}
-            transition={{ delay: 1, duration: 0.9 }}
-            className="rule-gold mt-8 w-44"
-          />
-          <motion.p
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.15, duration: 0.9 }}
-            className="text-ivory mt-6 text-base tracking-[0.25em] uppercase font-medium"
+            {WEDDING_DATA.groom.name}
+          </h1>
+
+          <span
+            className="my-0.5 sm:my-1"
+            style={{
+              fontFamily: "'Alex Brush', cursive",
+              fontSize: "clamp(1.5rem, 5vw, 2rem)",
+              color: "#f9e7b9",
+              textShadow: "0 2px 8px rgba(0,0,0,0.6)",
+            }}
           >
-            2&3 DECEMBER · 2026
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.35, duration: 0.9 }}
-            className="text-ivory/70 mt-2 text-xs tracking-[0.28em] uppercase"
+            and
+          </span>
+
+          <h2
+            className="text-gold-foil font-normal tracking-wide text-center"
+            style={{
+              fontFamily: "'Cinzel', serif",
+              fontSize: "clamp(2rem, 6.5vw, 2.85rem)",
+              lineHeight: 1.12,
+              filter: "drop-shadow(0 2px 14px rgba(212, 175, 55, 0.45))",
+            }}
           >
-            Miwa Banquets · Wakad, Pune
-          </motion.p>
+            {WEDDING_DATA.bride.name}
+          </h2>
         </motion.div>
-      </div>
+
+        {/* Delicate Golden Divider Line */}
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 1, scaleX: 1 }}
+          transition={{ delay: 0.7, duration: 0.8 }}
+          className="my-3 sm:my-3.5 h-[1px] w-24 sm:w-32"
+          style={{
+            background: "linear-gradient(90deg, transparent, rgba(232, 202, 120, 0.85) 50%, transparent)",
+          }}
+        />
+
+        {/* Date: 02 · 12 · 2026 - original elegant small size in white */}
+        <motion.p
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.85, duration: 0.8 }}
+          className="text-white text-[0.7rem] sm:text-[0.75rem] tracking-[0.32em] font-light"
+          style={{
+            letterSpacing: "0.32em",
+            color: "#ffffff",
+            textShadow: "0 1px 4px rgba(0,0,0,0.7)",
+          }}
+        >
+          02 · 12 · 2026
+        </motion.p>
+
+        {/* Venue Location - original delicate small size in clean white */}
+        <motion.p
+          initial={{ opacity: 0, y: 4 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 0.8 }}
+          className="text-white text-[0.58rem] sm:text-[0.62rem] tracking-[0.32em] uppercase mt-1.5 font-light"
+          style={{
+            letterSpacing: "0.32em",
+            color: "#ffffff",
+            textShadow: "0 1px 4px rgba(0,0,0,0.7)",
+          }}
+        >
+          Miwa Banquets, Wakad, Pune
+        </motion.p>
+      </motion.div>
+
+      {/* Couple Portrait - Decreased size and placed at the bottom */}
+      <motion.div
+        style={{ y: coupleShift, opacity: opacityFade }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-10 w-full flex-1 flex items-end justify-center pointer-events-none select-none overflow-hidden"
+      >
+        <div className="relative w-full max-w-[200px] sm:max-w-[230px] h-full max-h-[290px] sm:max-h-[330px] flex items-end justify-center pb-8">
+          <img
+            src="/images/hero-couple.jpg"
+            alt="Manas and Komal in wedding attire"
+            className="w-auto h-full max-h-[280px] sm:max-h-[320px] object-contain object-bottom drop-shadow-[0_15px_30px_rgba(0,0,0,0.6)]"
+            style={{
+              maskImage:
+                "linear-gradient(to bottom, transparent 0%, black 10%, black 92%, transparent 100%), linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+              WebkitMaskImage:
+                "linear-gradient(to bottom, transparent 0%, black 10%, black 92%, transparent 100%), linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+              maskComposite: "intersect",
+              WebkitMaskComposite: "destination-in",
+            }}
+          />
+        </div>
+      </motion.div>
+
+      {/* Subtle Scroll Down Prompt at the very bottom */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.8 }}
-        style={{ opacity: textOpacity }}
-        className="text-gold/70 absolute bottom-4 z-20 flex flex-col items-center"
+        transition={{ delay: 1.2 }}
+        style={{ opacity: opacityFade }}
+        className="pointer-events-none absolute bottom-2 z-20 flex flex-col items-center text-[#f7e098]/85"
       >
-        <span className="text-[0.55rem] tracking-[0.4em] uppercase">Scroll</span>
+        <span className="text-[0.48rem] tracking-[0.4em] uppercase font-light">Scroll</span>
         <motion.span
-          animate={{ y: [0, 6, 0] }}
+          animate={{ y: [0, 4, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
         >
-          <IconChevronDown className="h-4 w-4" />
+          <IconChevronDown className="h-3 w-3" />
         </motion.span>
       </motion.div>
     </section>
@@ -562,48 +646,51 @@ function SectionDivider({ label }) {
 function PersonCard({ person, role }) {
   return (
     <FadeIn className="relative">
-      <div className="bg-[#FAF7F0] border border-gold/45 shadow-luxe relative overflow-hidden rounded-[2.25rem] px-6 sm:px-8 py-10 min-h-[250px] flex flex-col justify-center">
+      <div className="bg-[#FAF7F0] border border-gold/45 shadow-luxe relative overflow-hidden rounded-[2.25rem] px-6 sm:px-8 py-8 min-h-[250px] flex flex-col justify-center items-center">
         {/* Subtle decorative inner border */}
         <div className="pointer-events-none absolute inset-2.5 rounded-[1.75rem] border border-gold/20" />
         
         <div className="relative z-10 flex flex-col items-center text-center w-full">
-          {/* Role header with gold wings */}
-          <div className="inline-flex items-center justify-center gap-2.5">
-            <span className="rule-gold w-8 opacity-70" />
-            <span className="text-gold text-[0.72rem] tracking-[0.45em] uppercase font-semibold">
-              {role}
-            </span>
-            <span className="rule-gold w-8 opacity-70" />
-          </div>
+          {/* Role badge */}
+          <span className="bg-primary text-gold border border-gold/40 text-[0.65rem] tracking-[0.25em] uppercase font-semibold px-4 py-1 rounded-full shadow-xs whitespace-nowrap mb-2">
+            {role}
+          </span>
 
           {/* Full Name */}
-          <h3 className="text-primary font-display mt-4 text-3xl sm:text-[2.6rem] font-normal leading-tight tracking-wide">
+          <h3 className="text-primary font-display mt-1 text-2xl sm:text-3xl font-medium leading-tight tracking-wide">
             {person.fullName}
           </h3>
 
+          {/* Bio / Two Lines About Him or Her */}
+          {person.bio && (
+            <p className="text-muted-foreground mt-2.5 max-w-xs text-xs sm:text-[0.82rem] leading-relaxed italic px-2">
+              &ldquo;{person.bio}&rdquo;
+            </p>
+          )}
+
           {/* Ornate Divider */}
-          <div className="my-5 flex items-center justify-center gap-2.5 w-full">
-            <span className="rule-gold w-20 opacity-80" />
-            <span className="text-gold text-sm leading-none">✦</span>
-            <span className="rule-gold w-20 opacity-80" />
+          <div className="my-3.5 flex items-center justify-center gap-2.5 w-full">
+            <span className="rule-gold w-16 opacity-80" />
+            <span className="text-gold text-xs leading-none">✦</span>
+            <span className="rule-gold w-16 opacity-80" />
           </div>
 
           {/* Parents info box with clean 2-column key/value alignment */}
-          <div className="w-full max-w-[340px] bg-secondary/60 border border-gold/25 rounded-2xl py-4 px-5 shadow-xs">
-            <div className="space-y-2 text-xs">
+          <div className="w-full max-w-[320px] bg-secondary/60 border border-gold/25 rounded-2xl py-3 px-4 shadow-xs">
+            <div className="space-y-1.5 text-xs">
               <div className="flex items-center justify-center gap-2 text-left">
-                <span className="text-muted-foreground uppercase tracking-wider text-[0.68rem] font-bold shrink-0 min-w-[55px] text-right">
+                <span className="text-muted-foreground uppercase tracking-wider text-[0.65rem] font-bold shrink-0 min-w-[50px] text-right">
                   Father:
                 </span>
-                <span className="text-foreground font-semibold text-sm">
+                <span className="text-foreground font-semibold text-xs sm:text-sm">
                   {person.parents.father}
                 </span>
               </div>
               <div className="flex items-center justify-center gap-2 text-left">
-                <span className="text-muted-foreground uppercase tracking-wider text-[0.68rem] font-bold shrink-0 min-w-[55px] text-right">
+                <span className="text-muted-foreground uppercase tracking-wider text-[0.65rem] font-bold shrink-0 min-w-[50px] text-right">
                   Mother:
                 </span>
-                <span className="text-foreground font-semibold text-sm">
+                <span className="text-foreground font-semibold text-xs sm:text-sm">
                   {person.parents.mother}
                 </span>
               </div>
@@ -627,20 +714,9 @@ function CoupleSection() {
           </p>
         </FadeIn>
 
-        {/* Beautiful Ornate Archival Couple Portrait with Floral Corner Accent */}
+        {/* Beautiful Ornate Archival Couple Portrait with Clean Luxury Frame */}
         <FadeIn delay={0.1} className="mt-9">
           <div className="relative mx-auto max-w-[340px] sm:max-w-[360px]">
-            {/* Elegant Floral Cluster at Top Right overlapping frame */}
-            <motion.img
-              src="/images/floral-corner.png"
-              alt=""
-              aria-hidden="true"
-              className="pointer-events-none absolute -top-8 -right-8 z-20 w-32 sm:w-36 drop-shadow-md select-none"
-              initial={{ opacity: 0, scale: 0.8, rotate: 10 }}
-              animate={{ opacity: 0.95, scale: 1, rotate: 0 }}
-              transition={{ delay: 0.25, duration: 0.9 }}
-            />
-
             {/* Inner Gold Inset Frame on Photo */}
             <div className="relative overflow-hidden rounded-[2.25rem] border-2 border-gold/45 p-1.5 bg-gradient-to-tr from-[#C5A059] via-[#F9E8B2] to-[#D4AF37] shadow-luxe">
               <div className="relative overflow-hidden rounded-[2rem] bg-emerald-ink">
@@ -857,34 +933,42 @@ function FunctionsSection() {
   return (
     <section className="relative px-4 sm:px-6 py-20 bg-background/50">
       <div className="mx-auto max-w-lg">
+        {/* Celebration & Dates Header */}
         <FadeIn className="text-center">
           <SectionDivider label="Wedding Itinerary" />
           <h2 className="text-primary mt-5 text-4xl font-light">
-            Functions & Events
+            The Celebration
           </h2>
-          <p className="text-muted-foreground mx-auto mt-2 max-w-sm text-sm">
+          <div className="inline-flex items-center justify-center gap-2 mt-3 px-4 py-1.5 rounded-full bg-secondary/80 border border-gold/35 shadow-xs">
+            <IconCalendarPlus className="h-3.5 w-3.5 text-gold" />
+            <span className="text-gold text-xs font-semibold tracking-[0.25em] uppercase">
+              02-03 Dec 2026
+            </span>
+          </div>
+          <p className="text-muted-foreground mx-auto mt-3 max-w-sm text-sm">
             Join us in the celebrations and rituals across our two joyful days.
           </p>
         </FadeIn>
 
-        <div className="mt-12 space-y-16">
+        {/* Day-wise Wedding Itinerary with generous spacing between Day 1 & Day 2 */}
+        <div className="mt-14 space-y-24">
           {WEDDING_DATA.days.map((dayGroup, groupIdx) => (
-            <div key={dayGroup.dayNumber} className="space-y-6">
+            <div key={dayGroup.dayNumber} className="space-y-7">
               {/* Day Badge & Date Header */}
               <FadeIn delay={0.05}>
                 <div className="flex flex-col items-center justify-center text-center">
-                  <span className="bg-secondary/90 border border-gold/40 text-gold px-4 py-1 rounded-full text-xs font-semibold tracking-[0.25em] uppercase shadow-xs">
+                  <span className="bg-primary text-gold border border-gold/50 px-5 py-1.5 rounded-full text-xs font-semibold tracking-[0.28em] uppercase shadow-sm">
                     {dayGroup.dayNumber}
                   </span>
-                  <h3 className="text-primary font-display mt-2.5 text-2xl sm:text-3xl font-medium tracking-wide">
+                  <h3 className="text-primary font-display mt-3 text-2xl sm:text-3xl font-medium tracking-wide">
                     {dayGroup.dateLabel}
                   </h3>
-                  <div className="rule-gold mt-3 w-28 opacity-75" />
+                  <div className="rule-gold mt-3 w-32 opacity-80" />
                 </div>
               </FadeIn>
 
               {/* Event Cards for this Day */}
-              <div className="space-y-7 sm:space-y-8 pt-2">
+              <div className="space-y-8 pt-2">
                 {dayGroup.events.map((fn, idx) => {
                   const Icon = fn.icon;
                   const isWedding = fn.highlight;
@@ -941,7 +1025,7 @@ function FunctionsSection() {
                                 <h3
                                   style={{
                                     fontFamily: "Cormorant Garamond, serif",
-                                    fontSize: "1.35rem",
+                                    fontSize: "1.4rem",
                                     fontWeight: 600,
                                     lineHeight: 1.2,
                                     color: "#FAF7F0",
@@ -958,7 +1042,6 @@ function FunctionsSection() {
                                       color: "var(--gold-soft)",
                                       margin: "2px 0 0 0",
                                       lineHeight: 1.1,
-                                      whiteSpace: "nowrap",
                                     }}
                                   >
                                     ({fn.subtitle})
@@ -991,40 +1074,15 @@ function FunctionsSection() {
 
                         {/* Body Content */}
                         <div className="p-6 space-y-4">
-                          {/* Venue Card */}
-                          <div className="bg-white/80 border border-gold/20 rounded-2xl p-4 shadow-xs">
-                            <div className="flex items-start gap-3">
-                              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-secondary text-gold border border-gold/25 mt-0.5">
-                                <IconMapPin className="h-4 w-4" />
-                              </span>
-                              <div className="flex-1 min-w-0">
-                                <span className="text-[0.65rem] font-bold tracking-[0.25em] text-gold uppercase block">
-                                  Venue
-                                </span>
-                                <p className="text-foreground text-sm font-medium mt-1 leading-relaxed">
-                                  {fn.venue}
-                                </p>
-                                <a
-                                  href={WEDDING_DATA.venue.mapUrl}
-                                  target="_blank"
-                                  rel="noreferrer"
-                                  className="inline-flex items-center gap-1.5 text-xs text-gold hover:text-gold/80 hover:underline mt-2.5 font-semibold tracking-wide"
-                                >
-                                  <IconNavigation className="h-3.5 w-3.5" /> View on Google Maps
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* Theme Card if specified */}
+                          {/* Theme / Dress Code Card if specified */}
                           {fn.theme && (
-                            <div className="bg-secondary/40 border border-gold/20 rounded-2xl p-3.5 shadow-xs">
+                            <div className="bg-secondary/50 border border-gold/25 rounded-2xl p-3.5 shadow-xs">
                               <div className="flex items-center gap-2">
                                 <IconShirt className="h-4 w-4 text-gold shrink-0" />
                                 <span className="text-[0.65rem] font-bold tracking-[0.2em] text-gold uppercase">
                                   Theme / Dress Code:
                                 </span>
-                                <span className="text-foreground text-xs font-medium">
+                                <span className="text-foreground text-xs font-semibold">
                                   {fn.theme}
                                 </span>
                               </div>
@@ -1120,11 +1178,17 @@ function CelebrationSection() {
               />
               <div className="from-card absolute inset-0 bg-gradient-to-t via-transparent to-transparent" />
             </div>
-            <div className="px-6 pt-2 pb-6 text-center">
+            <div className="px-6 pt-3 pb-6 text-center">
+              {/* Highlight Tagline */}
+              <div className="inline-block px-4 py-1.5 rounded-full bg-secondary border border-gold/35 mb-3">
+                <span className="text-gold font-semibold text-xs tracking-wider">
+                  No hassle, all celebrations under one roof
+                </span>
+              </div>
               <p className="text-primary text-xl font-medium">
                 {WEDDING_DATA.venue.name}
               </p>
-              <p className="text-muted-foreground mt-1 text-xs leading-relaxed max-w-xs mx-auto">
+              <p className="text-muted-foreground mt-1 text-xs leading-relaxed max-w-xs mx-auto font-medium">
                 {WEDDING_DATA.venue.address}
               </p>
               <motion.a
@@ -1359,9 +1423,231 @@ function ScrollProgress() {
   );
 }
 
+function MusicPlayer({ shouldPlay, onToggle, isMuted }) {
+  const playerRef = React.useRef(null);
+  const containerRef = React.useRef(null);
+  const checkIntervalRef = React.useRef(null);
+  const [isPlaying, setIsPlaying] = React.useState(false);
+  const pendingPlayRef = React.useRef(false);
+
+  const START_TIME = 64; // 1:04 in seconds (64s)
+  const END_TIME = 300;  // 5:00 in seconds (300s)
+
+  const executePlay = (player) => {
+    if (!player) return;
+    try {
+      if (typeof player.unMute === "function") {
+        player.unMute();
+      }
+      if (typeof player.setVolume === "function") {
+        player.setVolume(100);
+      }
+      if (typeof player.seekTo === "function") {
+        const cur = player.getCurrentTime?.();
+        if (cur === undefined || cur < START_TIME || cur >= END_TIME) {
+          player.seekTo(START_TIME, true);
+        }
+      }
+      if (typeof player.playVideo === "function") {
+        player.playVideo();
+        setIsPlaying(true);
+      }
+    } catch (e) {
+      console.warn("YouTube play attempt:", e);
+    }
+  };
+
+  const safePlay = () => {
+    pendingPlayRef.current = true;
+    if (playerRef.current && typeof playerRef.current.playVideo === "function") {
+      executePlay(playerRef.current);
+    }
+  };
+
+  React.useEffect(() => {
+    // Expose direct trigger on window for immediate synchronous user gesture handling
+    window.__playWeddingMusic = () => {
+      safePlay();
+    };
+
+    // Ensure YouTube IFrame Player API is loaded
+    if (!window.YT) {
+      const tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      const firstScriptTag = document.getElementsByTagName("script")[0];
+      firstScriptTag?.parentNode?.insertBefore(tag, firstScriptTag);
+    }
+
+    const initPlayer = () => {
+      if (playerRef.current || !window.YT || !window.YT.Player) return;
+      try {
+        playerRef.current = new window.YT.Player("youtube-audio-player", {
+          height: "100%",
+          width: "100%",
+          videoId: "ehP54Fsk_4g",
+          playerVars: {
+            autoplay: 1,
+            mute: 1, // Pre-buffer silently immediately so playback is instantaneous upon seal click
+            controls: 0,
+            disablekb: 1,
+            fs: 0,
+            loop: 1,
+            modestbranding: 1,
+            playsinline: 1,
+            rel: 0,
+            start: START_TIME,
+          },
+          events: {
+            onReady: (event) => {
+              try {
+                // Seek to exactly 1:04 (64s)
+                event.target.seekTo(START_TIME, true);
+                if (pendingPlayRef.current || shouldPlay) {
+                  executePlay(event.target);
+                } else {
+                  // Preload buffer silently then pause at 1:04
+                  event.target.mute();
+                  event.target.playVideo();
+                  setTimeout(() => {
+                    if (!pendingPlayRef.current) {
+                      event.target.pauseVideo();
+                      event.target.seekTo(START_TIME, true);
+                    }
+                  }, 800);
+                }
+              } catch (e) {
+                console.warn(e);
+              }
+            },
+            onStateChange: (event) => {
+              if (event.data === window.YT.PlayerState.PLAYING) {
+                if (pendingPlayRef.current || shouldPlay) {
+                  setIsPlaying(true);
+                }
+                if (!checkIntervalRef.current) {
+                  checkIntervalRef.current = setInterval(() => {
+                    try {
+                      const current = playerRef.current?.getCurrentTime();
+                      if (current !== undefined && (current >= END_TIME || current < START_TIME - 2)) {
+                        playerRef.current.seekTo(START_TIME, true);
+                      }
+                    } catch (e) {
+                      console.warn(e);
+                    }
+                  }, 400);
+                }
+              } else if (
+                event.data === window.YT.PlayerState.PAUSED ||
+                event.data === window.YT.PlayerState.ENDED
+              ) {
+                if (event.data === window.YT.PlayerState.ENDED) {
+                  playerRef.current?.seekTo(START_TIME, true);
+                  playerRef.current?.playVideo();
+                }
+              }
+            },
+          },
+        });
+      } catch (err) {
+        console.warn("Error creating YT Player:", err);
+      }
+    };
+
+    if (window.YT && window.YT.Player) {
+      initPlayer();
+    } else {
+      const prevReady = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = () => {
+        if (typeof prevReady === "function") prevReady();
+        initPlayer();
+      };
+    }
+
+    return () => {
+      if (checkIntervalRef.current) clearInterval(checkIntervalRef.current);
+      try {
+        playerRef.current?.destroy();
+      } catch (e) {}
+    };
+  }, []);
+
+  // Sync play/pause with shouldPlay and isMuted
+  React.useEffect(() => {
+    if (!playerRef.current) return;
+    try {
+      if (shouldPlay && !isMuted) {
+        safePlay();
+      } else if (typeof playerRef.current.pauseVideo === "function") {
+        playerRef.current.pauseVideo();
+        setIsPlaying(false);
+      }
+    } catch (e) {
+      console.warn(e);
+    }
+  }, [shouldPlay, isMuted]);
+
+  return (
+    <>
+      {/* Hidden YouTube IFrame */}
+      <div
+        ref={containerRef}
+        style={{
+          position: "fixed",
+          bottom: "-200px",
+          right: "-200px",
+          width: "200px",
+          height: "200px",
+          opacity: 0.001,
+          pointerEvents: "none",
+          zIndex: -50,
+          overflow: "hidden",
+        }}
+      >
+        <div id="youtube-audio-player" />
+      </div>
+
+      {/* Floating Audio Toggle Pill */}
+      <motion.button
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.5, duration: 0.6 }}
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.94 }}
+        onClick={onToggle}
+        aria-label={isPlaying && !isMuted ? "Pause Wedding Song" : "Play Wedding Song"}
+        className="fixed bottom-5 right-5 z-40 flex items-center gap-2 rounded-full px-3.5 py-2.5 shadow-gold backdrop-blur-md cursor-pointer border border-gold/40 text-gold bg-emerald-ink/90 transition-all select-none"
+      >
+        {isPlaying && !isMuted ? (
+          <>
+            <motion.span
+              animate={{ rotate: 360 }}
+              transition={{ repeat: Infinity, duration: 6, ease: "linear" }}
+              className="flex items-center justify-center text-gold"
+            >
+              <IconMusic className="h-4 w-4" />
+            </motion.span>
+            <span className="text-[0.68rem] tracking-[0.2em] uppercase font-semibold text-gold-soft hidden sm:inline">
+              Music On
+            </span>
+            <IconVolume2 className="h-3.5 w-3.5 text-gold-soft" />
+          </>
+        ) : (
+          <>
+            <IconVolumeX className="h-4 w-4 text-ivory/70" />
+            <span className="text-[0.68rem] tracking-[0.2em] uppercase font-medium text-ivory/70 hidden sm:inline">
+              Play Music
+            </span>
+          </>
+        )}
+      </motion.button>
+    </>
+  );
+}
+
 export default function WeddingApp() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [showOpener, setShowOpener] = React.useState(true);
+  const [musicActive, setMusicActive] = React.useState(false);
 
   React.useEffect(() => {
     document.body.style.overflow = isOpen ? "" : "hidden";
@@ -1371,13 +1657,34 @@ export default function WeddingApp() {
   }, [isOpen]);
 
   const handleOpen = () => {
+    // 1. Immediately invoke music trigger directly inside user click handler
+    try {
+      if (typeof window.__playWeddingMusic === "function") {
+        window.__playWeddingMusic();
+      }
+    } catch (e) {
+      console.warn("Could not play on click:", e);
+    }
+
+    setMusicActive(true);
     setIsOpen(true);
+
     // Remove opener from DOM after the sliding doors finish parting
     window.setTimeout(() => setShowOpener(false), 1200);
   };
 
+  const toggleMusic = () => {
+    setMusicActive((prev) => !prev);
+  };
+
   return (
     <Jsx.Fragment>
+      {/* Music player mounted at root so it pre-initializes and handles click gesture instantly */}
+      <MusicPlayer
+        shouldPlay={isOpen && musicActive}
+        isMuted={!musicActive}
+        onToggle={toggleMusic}
+      />
       <AnimatePresence>
         {showOpener && <EnvelopeOpener key="opener" onOpen={handleOpen} />}
       </AnimatePresence>
