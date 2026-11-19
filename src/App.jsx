@@ -437,12 +437,12 @@ function HeroSection() {
         style={{ y: textShift, opacity: opacityFade }}
         className="relative z-10 mx-auto flex w-full max-w-md flex-col items-center pt-32 sm:pt-36 pb-1 text-center px-4"
       >
-        {/* Subtitle / Invitation Line - delicate original size in clean white with subtle shadow */}
+        {/* Subtitle / Invitation Line - moved slightly higher up */}
         <motion.p
           initial={{ opacity: 0, y: -6 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="text-white text-[0.6rem] sm:text-[0.65rem] tracking-[0.42em] uppercase font-light mb-3 sm:mb-4"
+          className="text-white text-[0.6rem] sm:text-[0.65rem] tracking-[0.42em] uppercase font-light mb-5 sm:mb-6 -mt-3 sm:-mt-4"
           style={{
             letterSpacing: "0.42em",
             color: "#ffffff",
@@ -460,10 +460,11 @@ function HeroSection() {
           className="flex flex-col items-center"
         >
           <h1
-            className="text-gold-foil font-normal tracking-wide text-center"
+            className="text-gold-foil font-bold tracking-wide text-center"
             style={{
               fontFamily: "'Cinzel', serif",
               fontSize: "clamp(2rem, 6.5vw, 2.85rem)",
+              fontWeight: 700,
               lineHeight: 1.12,
               filter: "drop-shadow(0 2px 14px rgba(212, 175, 55, 0.45))",
             }}
@@ -484,10 +485,11 @@ function HeroSection() {
           </span>
 
           <h2
-            className="text-gold-foil font-normal tracking-wide text-center"
+            className="text-gold-foil font-bold tracking-wide text-center"
             style={{
               fontFamily: "'Cinzel', serif",
               fontSize: "clamp(2rem, 6.5vw, 2.85rem)",
+              fontWeight: 700,
               lineHeight: 1.12,
               filter: "drop-shadow(0 2px 14px rgba(212, 175, 55, 0.45))",
             }}
@@ -495,47 +497,6 @@ function HeroSection() {
             {WEDDING_DATA.bride.name}
           </h2>
         </motion.div>
-
-        {/* Delicate Golden Divider Line */}
-        <motion.div
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={{ opacity: 1, scaleX: 1 }}
-          transition={{ delay: 0.7, duration: 0.8 }}
-          className="my-3 sm:my-3.5 h-[1px] w-24 sm:w-32"
-          style={{
-            background: "linear-gradient(90deg, transparent, rgba(232, 202, 120, 0.85) 50%, transparent)",
-          }}
-        />
-
-        {/* Date: 02 · 12 · 2026 - original elegant small size in white */}
-        <motion.p
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.85, duration: 0.8 }}
-          className="text-white text-[0.7rem] sm:text-[0.75rem] tracking-[0.32em] font-light"
-          style={{
-            letterSpacing: "0.32em",
-            color: "#ffffff",
-            textShadow: "0 1px 4px rgba(0,0,0,0.7)",
-          }}
-        >
-          02 · 12 · 2026
-        </motion.p>
-
-        {/* Venue Location - original delicate small size in clean white */}
-        <motion.p
-          initial={{ opacity: 0, y: 4 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.8 }}
-          className="text-white text-[0.58rem] sm:text-[0.62rem] tracking-[0.32em] uppercase mt-1.5 font-light"
-          style={{
-            letterSpacing: "0.32em",
-            color: "#ffffff",
-            textShadow: "0 1px 4px rgba(0,0,0,0.7)",
-          }}
-        >
-          Miwa Banquets, Wakad, Pune
-        </motion.p>
       </motion.div>
 
       {/* Couple Portrait - Decreased size and placed at the bottom */}
@@ -1300,9 +1261,9 @@ function EnvelopeOpener({ onOpen }) {
             <span className="text-gold/80 text-[0.55rem] tracking-[0.5em] uppercase">
               A wedding invitation
             </span>
-            <h1 className="text-gold-foil mt-5 text-4xl sm:text-5xl leading-tight font-light" style={{ fontFamily: "'Cinzel Decorative', serif" }}>
+            <h1 className="text-gold-foil mt-5 text-4xl sm:text-5xl leading-tight font-bold tracking-wide" style={{ fontFamily: "'Cinzel Decorative', serif", fontWeight: 700 }}>
               {WEDDING_DATA.groom.name}
-              <span className="text-gold/80 mx-2 text-2xl sm:text-3xl" style={{ fontFamily: "'Alex Brush', cursive" }}>&</span>
+              <span className="text-gold/90 mx-2 text-2xl sm:text-3xl font-normal" style={{ fontFamily: "'Alex Brush', cursive" }}>&</span>
               {WEDDING_DATA.bride.name}
             </h1>
             <span className="rule-gold mt-6 w-32" />
