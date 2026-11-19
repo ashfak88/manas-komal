@@ -283,7 +283,7 @@ const WEDDING_DATA = {
       mother: "Mrs. Kalpana Patil",
     },
     line: "Son of Prof. Gopal Patil & Mrs. Kalpana Patil",
-    image: "/images/groom.png",
+    image: "/images/manas-circle.png",
     bio: "An SAP professional by day, an explorer by heart, and a chai enthusiast always.",
   },
   bride: {
@@ -294,7 +294,7 @@ const WEDDING_DATA = {
       mother: "Mangala Chaudhari",
     },
     line: "Daughter of Mr. Dyaneshwar Chaudhari & Mrs. Mangala Chaudhari",
-    image: "/images/bride.png",
+    image: "/images/komal-circle.png",
     bio: "An MBA graduate and professional chef, who loves exploring new places, hosting loved ones, and serving happiness one plate at a time.",
   },
   dateISO: "2026-12-03T07:30:00+05:30",
@@ -320,6 +320,7 @@ const WEDDING_DATA = {
           time: "07:30 AM",
           icon: IconSun,
           venue: "Miwa Banquets, Wakad, Pune",
+          theme: "Rajwadi",
         },
         {
           id: "d1-e2",
@@ -646,56 +647,38 @@ function SectionDivider({ label }) {
 function PersonCard({ person, role }) {
   return (
     <FadeIn className="relative">
-      <div className="bg-[#FAF7F0] border border-gold/45 shadow-luxe relative overflow-hidden rounded-[2.25rem] px-6 sm:px-8 py-8 min-h-[250px] flex flex-col justify-center items-center">
+      <div className="bg-[#FAF7F0] border border-gold/45 shadow-luxe relative overflow-hidden rounded-[2.25rem] px-6 sm:px-8 pt-7 pb-8 flex flex-col justify-center items-center">
         {/* Subtle decorative inner border */}
         <div className="pointer-events-none absolute inset-2.5 rounded-[1.75rem] border border-gold/20" />
-        
+
         <div className="relative z-10 flex flex-col items-center text-center w-full">
+          {/* Clean Circular Portrait with zero extraneous borders */}
+          <div className="relative mb-4 flex items-center justify-center">
+            <div className="relative h-32 w-32 sm:h-36 sm:w-36 rounded-full overflow-hidden shadow-md">
+              <img
+                src={person.image}
+                alt={person.fullName}
+                className="h-full w-full object-cover object-center rounded-full"
+              />
+            </div>
+          </div>
+
           {/* Role badge */}
-          <span className="bg-primary text-gold border border-gold/40 text-[0.65rem] tracking-[0.25em] uppercase font-semibold px-4 py-1 rounded-full shadow-xs whitespace-nowrap mb-2">
+          <span className="bg-primary text-gold border border-gold/40 text-[0.62rem] sm:text-[0.65rem] tracking-[0.25em] uppercase font-semibold px-4 py-1 rounded-full shadow-xs whitespace-nowrap mb-2">
             {role}
           </span>
 
           {/* Full Name */}
-          <h3 className="text-primary font-display mt-1 text-2xl sm:text-3xl font-medium leading-tight tracking-wide">
+          <h3 className="text-primary font-display mt-0.5 text-2xl sm:text-3xl font-medium leading-tight tracking-wide">
             {person.fullName}
           </h3>
 
-          {/* Bio / Two Lines About Him or Her */}
+          {/* Bio without double quotes */}
           {person.bio && (
-            <p className="text-muted-foreground mt-2.5 max-w-xs text-xs sm:text-[0.82rem] leading-relaxed italic px-2">
-              &ldquo;{person.bio}&rdquo;
+            <p className="text-muted-foreground mt-2 max-w-xs text-xs sm:text-[0.85rem] leading-relaxed italic px-2">
+              {person.bio}
             </p>
           )}
-
-          {/* Ornate Divider */}
-          <div className="my-3.5 flex items-center justify-center gap-2.5 w-full">
-            <span className="rule-gold w-16 opacity-80" />
-            <span className="text-gold text-xs leading-none">✦</span>
-            <span className="rule-gold w-16 opacity-80" />
-          </div>
-
-          {/* Parents info box with clean 2-column key/value alignment */}
-          <div className="w-full max-w-[320px] bg-secondary/60 border border-gold/25 rounded-2xl py-3 px-4 shadow-xs">
-            <div className="space-y-1.5 text-xs">
-              <div className="flex items-center justify-center gap-2 text-left">
-                <span className="text-muted-foreground uppercase tracking-wider text-[0.65rem] font-bold shrink-0 min-w-[50px] text-right">
-                  Father:
-                </span>
-                <span className="text-foreground font-semibold text-xs sm:text-sm">
-                  {person.parents.father}
-                </span>
-              </div>
-              <div className="flex items-center justify-center gap-2 text-left">
-                <span className="text-muted-foreground uppercase tracking-wider text-[0.65rem] font-bold shrink-0 min-w-[50px] text-right">
-                  Mother:
-                </span>
-                <span className="text-foreground font-semibold text-xs sm:text-sm">
-                  {person.parents.mother}
-                </span>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </FadeIn>
@@ -706,53 +689,13 @@ function CoupleSection() {
   return (
     <section className="relative overflow-hidden px-5 py-20">
       <div className="relative mx-auto max-w-md">
+        {/* Header Intro */}
         <FadeIn className="text-center">
           <SectionDivider label="The Couple" />
           <h2 className="text-primary mt-5 text-4xl font-light">Two Hearts, One Journey</h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xs text-sm leading-relaxed">
             Prof. Gopal Patil & Mrs. Kalpana Patil cordially invite you to celebrate the wedding of their son with love and joy.
           </p>
-        </FadeIn>
-
-        {/* Beautiful Ornate Archival Couple Portrait with Clean Luxury Frame */}
-        <FadeIn delay={0.1} className="mt-9">
-          <div className="relative mx-auto max-w-[340px] sm:max-w-[360px]">
-            {/* Inner Gold Inset Frame on Photo */}
-            <div className="relative overflow-hidden rounded-[2.25rem] border-2 border-gold/45 p-1.5 bg-gradient-to-tr from-[#C5A059] via-[#F9E8B2] to-[#D4AF37] shadow-luxe">
-              <div className="relative overflow-hidden rounded-[2rem] bg-emerald-ink">
-                <img
-                  src="/images/couple.jpg"
-                  alt="Manas and Komal"
-                  className="h-[400px] sm:h-[440px] w-full object-cover object-top transition-transform duration-700 hover:scale-105"
-                />
-                
-                {/* Thin Inner Golden Inset Border for Archival Look */}
-                <div className="pointer-events-none absolute inset-3 rounded-[1.5rem] border border-gold/35 shadow-[inset_0_0_15px_rgba(0,0,0,0.35)]" />
-
-                {/* Subtle romantic vignette at bottom */}
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-emerald-ink/90 via-transparent to-black/15" />
-                
-                {/* Overlay names badge */}
-                <div className="absolute inset-x-0 bottom-0 p-5 text-center">
-                  <div className="inline-flex items-center justify-center gap-2 mb-1">
-                    <span className="rule-gold w-6 opacity-75" />
-                    <span className="text-gold-soft text-[0.62rem] tracking-[0.35em] uppercase font-semibold">
-                      Forever Begins
-                    </span>
-                    <span className="rule-gold w-6 opacity-75" />
-                  </div>
-                  <h3
-                    className="text-ivory mt-1 text-2xl sm:text-[1.75rem] font-light tracking-wide drop-shadow-sm"
-                    style={{ fontFamily: "'Cinzel Decorative', serif" }}
-                  >
-                    {WEDDING_DATA.groom.name}{" "}
-                    <span className="text-gold font-normal" style={{ fontFamily: "'Alex Brush', cursive" }}>&</span>{" "}
-                    {WEDDING_DATA.bride.name}
-                  </h3>
-                </div>
-              </div>
-            </div>
-          </div>
         </FadeIn>
 
         <div className="mt-10 space-y-8">
@@ -937,7 +880,7 @@ function FunctionsSection() {
         <FadeIn className="text-center">
           <SectionDivider label="Wedding Itinerary" />
           <h2 className="text-primary mt-5 text-4xl font-light">
-            The Celebration
+            Wedding Itinerary
           </h2>
           <div className="inline-flex items-center justify-center gap-2 mt-3 px-4 py-1.5 rounded-full bg-secondary/80 border border-gold/35 shadow-xs">
             <IconCalendarPlus className="h-3.5 w-3.5 text-gold" />
@@ -1103,14 +1046,13 @@ function FunctionsSection() {
 }
 
 const weddingOverviewItems = [
-  { icon: IconSparkles, label: "The Ceremony", value: WEDDING_DATA.muhurthamLabel },
   { icon: IconClock, label: "Day & Date", value: `${WEDDING_DATA.dateLabel}` },
   { icon: IconMapPin, label: "Venue", value: WEDDING_DATA.venue.name },
 ];
 
 function CelebrationSection() {
   return (
-    <section className="relative px-5 py-20">
+    <section className="relative px-5 pt-20 pb-8">
       <div className="mx-auto max-w-md">
         <FadeIn className="text-center">
           <SectionDivider label="Main Wedding" />
@@ -1130,9 +1072,6 @@ function CelebrationSection() {
               </p>
               <p className="text-ivory/85 text-sm tracking-[0.35em] uppercase">
                 December 2026
-              </p>
-              <p className="text-gold/90 text-xs tracking-[0.25em] uppercase mt-1 font-light">
-                The Sacred Union · 07:30 AM
               </p>
             </div>
             <div className="divide-gold/15 divide-y">
@@ -1164,9 +1103,17 @@ function CelebrationSection() {
             </div>
           </div>
         </FadeIn>
+      </div>
+    </section>
+  );
+}
 
+function VenueDirectionsSection() {
+  return (
+    <section className="relative px-5 pt-8 pb-20">
+      <div className="mx-auto max-w-md">
         <FadeIn delay={0.16}>
-          <div className="border-gold/30 bg-card shadow-luxe mt-6 overflow-hidden rounded-[2rem] border">
+          <div className="border-gold/30 bg-card shadow-luxe overflow-hidden rounded-[2rem] border">
             <div className="relative">
               <img
                 src="/images/map-preview.jpg"
@@ -1693,8 +1640,9 @@ export default function WeddingApp() {
         <HeroSection />
         <CoupleSection />
         <CountdownSection />
-        <FunctionsSection />
         <CelebrationSection />
+        <FunctionsSection />
+        <VenueDirectionsSection />
         <FooterSection />
       </main>
     </Jsx.Fragment>
