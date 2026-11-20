@@ -195,33 +195,26 @@ function AuroraBackground({ className = "", intensity = 1 }) {
     <div
       aria-hidden="true"
       className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}
-      style={{ opacity: intensity }}
+      style={{ opacity: intensity, transform: "translateZ(0)", willChange: "transform" }}
     >
       <div
-        className="absolute -top-1/3 left-[-20%] h-[80%] w-[90%] rounded-full blur-3xl"
+        className="absolute -top-1/3 left-[-20%] h-[80%] w-[90%] rounded-full blur-2xl"
         style={{
-          background: "radial-gradient(circle at 50% 50%, oklch(0.55 0.13 160 / 0.55), transparent 65%)",
-          animation: "aurora-drift 18s ease-in-out infinite",
+          background: "radial-gradient(circle at 50% 50%, oklch(0.55 0.13 160 / 0.4), transparent 65%)",
+          transform: "translateZ(0)",
         }}
       />
       <div
-        className="absolute top-[10%] right-[-25%] h-[75%] w-[85%] rounded-full blur-3xl"
+        className="absolute top-[10%] right-[-25%] h-[75%] w-[85%] rounded-full blur-2xl"
         style={{
-          background: "radial-gradient(circle at 50% 50%, oklch(0.8 0.12 85 / 0.5), transparent 65%)",
-          animation: "aurora-drift 24s ease-in-out infinite reverse",
+          background: "radial-gradient(circle at 50% 50%, oklch(0.8 0.12 85 / 0.35), transparent 65%)",
+          transform: "translateZ(0)",
         }}
       />
       <div
-        className="absolute bottom-[-25%] left-[10%] h-[70%] w-[80%] rounded-full blur-3xl"
+        className="absolute inset-0 opacity-40"
         style={{
-          background: "radial-gradient(circle at 50% 50%, oklch(0.52 0.16 18 / 0.4), transparent 65%)",
-          animation: "aurora-drift 30s ease-in-out infinite",
-        }}
-      />
-      <div
-        className="absolute inset-0 mix-blend-soft-light"
-        style={{
-          backgroundImage: "radial-gradient(oklch(0.98 0.02 92 / 0.35) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(oklch(0.98 0.02 92 / 0.3) 1px, transparent 1px)",
           backgroundSize: "22px 22px",
         }}
       />
@@ -229,19 +222,19 @@ function AuroraBackground({ className = "", intensity = 1 }) {
   );
 }
 
-function FloatingPetals({ count = 14, burst = false }) {
+function FloatingPetals({ count = 8, burst = false }) {
   const petals = React.useMemo(
     () =>
-      Array.from({ length: count }, (_, n) => ({
+      Array.from({ length: Math.min(count, 8) }, (_, n) => ({
         id: n,
-        left: Math.random() * 100,
-        size: 8 + Math.random() * 12,
-        delay: burst ? Math.random() * 0.4 : Math.random() * 12,
-        duration: (burst ? 3.2 : 11) + Math.random() * 6,
-        drift: (Math.random() - 0.5) * 140,
-        spin: 180 + Math.random() * 540,
-        hue: Math.random() > 0.5 ? "oklch(0.78 0.115 85)" : "oklch(0.62 0.13 18)",
-        opacity: 0.35 + Math.random() * 0.45,
+        left: 5 + (n * 90) / 8,
+        size: 8 + (n % 4) * 3,
+        delay: burst ? n * 0.05 : n * 1.4,
+        duration: (burst ? 3.2 : 9) + (n % 3) * 2,
+        drift: ((n % 5) - 2) * 30,
+        spin: 180 + (n % 4) * 90,
+        hue: n % 2 === 0 ? "oklch(0.78 0.115 85)" : "oklch(0.62 0.13 18)",
+        opacity: 0.35 + (n % 3) * 0.15,
       })),
     [count, burst],
   );
@@ -259,6 +252,7 @@ function FloatingPetals({ count = 14, burst = false }) {
             borderRadius: "60% 10% 60% 10%",
             background: petal.hue,
             opacity: petal.opacity,
+            willChange: "transform",
           }}
           initial={{ y: "-10vh", x: 0, rotate: 0 }}
           animate={{ y: "115vh", x: petal.drift, rotate: petal.spin }}
@@ -557,14 +551,13 @@ function ParallaxWrap({ children, speed = 40, scaleRange, className = "" }) {
 }
 
 const revealVariants = {
-  hidden: { opacity: 0, y: 35, scale: 0.97 },
+  hidden: { opacity: 0, y: 20 },
   show: {
     opacity: 1,
     y: 0,
-    scale: 1,
     transition: {
-      duration: 0.85,
-      ease: [0.22, 1, 0.36, 1],
+      duration: 0.55,
+      ease: [0.25, 0.1, 0.25, 1],
     },
   },
 };
@@ -1215,19 +1208,24 @@ function EnvelopeOpener({ onOpen }) {
     <motion.div
       className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden"
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.4 }}
+      style={{ willChange: "opacity" }}
     >
       {[-1, 1].map((direction) => (
         <motion.div
           key={direction}
           className="bg-emerald-ink absolute inset-y-0 w-[51%] overflow-hidden z-10"
-          style={{ [direction === -1 ? "left" : "right"]: 0 }}
+          style={{ 
+            [direction === -1 ? "left" : "right"]: 0,
+            transform: "translateZ(0)",
+            willChange: "transform",
+          }}
           animate={opening ? { x: `${direction * 105}%` } : { x: 0 }}
-          transition={{ duration: 1.1, ease: [0.76, 0, 0.24, 1] }}
+          transition={{ duration: 0.85, ease: [0.32, 0.72, 0, 1] }}
         >
-          <AuroraBackground intensity={0.55} />
+          <AuroraBackground intensity={0.4} />
           <div
-            className="pointer-events-none absolute inset-0 opacity-20"
+            className="pointer-events-none absolute inset-0 opacity-15"
             style={{
               backgroundImage: "url('/images/mandala-texture.jpg')",
               backgroundSize: "cover",
@@ -1243,15 +1241,16 @@ function EnvelopeOpener({ onOpen }) {
           />
         </motion.div>
       ))}
-      <FloatingPetals count={10} />
+      <FloatingPetals count={6} />
       <AnimatePresence>
         {!opening && (
           <motion.div
             className="relative z-20 flex flex-col items-center px-8 text-center"
-            initial={{ opacity: 0, y: 18 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, filter: "blur(6px)" }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            style={{ willChange: "transform, opacity" }}
           >
             <span className="text-gold/80 text-[0.55rem] tracking-[0.5em] uppercase">
               A wedding invitation
@@ -1275,27 +1274,28 @@ function EnvelopeOpener({ onOpen }) {
                   onOpen();
                 }
               }}
-              whileTap={{ scale: 0.92 }}
-              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.94 }}
+              whileHover={{ scale: 1.04 }}
               className="group relative mt-12 grid h-28 w-28 place-items-center cursor-pointer select-none"
               aria-label="Open the invitation"
+              style={{ transform: "translateZ(0)" }}
             >
               <motion.span
                 className="border-gold/40 absolute inset-0 rounded-full border pointer-events-none"
-                animate={{ scale: [1, 1.28, 1], opacity: [0.7, 0, 0.7] }}
+                animate={{ scale: [1, 1.2, 1], opacity: [0.6, 0, 0.6] }}
                 transition={{
                   repeat: Infinity,
-                  duration: 2.6,
-                  ease: "easeOut",
+                  duration: 2.8,
+                  ease: "easeInOut",
                 }}
               />
               <motion.span
                 className="shadow-gold grid h-20 w-20 place-items-center rounded-full pointer-events-none"
                 style={{ backgroundImage: "var(--gradient-gold)" }}
-                animate={{ y: [0, -5, 0] }}
+                animate={{ y: [0, -3, 0] }}
                 transition={{
                   repeat: Infinity,
-                  duration: 3.4,
+                  duration: 3,
                   ease: "easeInOut",
                 }}
               >
@@ -1308,8 +1308,8 @@ function EnvelopeOpener({ onOpen }) {
             </motion.button>
             <motion.p
               className="text-ivory/60 mt-8 text-[0.6rem] tracking-[0.4em] uppercase"
-              animate={{ opacity: [0.4, 1, 0.4] }}
-              transition={{ repeat: Infinity, duration: 2.4 }}
+              animate={{ opacity: [0.5, 0.9, 0.5] }}
+              transition={{ repeat: Infinity, duration: 2.5 }}
             >
               Tap the seal to open
             </motion.p>
