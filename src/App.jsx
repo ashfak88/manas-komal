@@ -1264,6 +1264,12 @@ function EnvelopeOpener({ onOpen }) {
             <span className="rule-gold mt-6 w-32" />
             <motion.button
               onClick={() => {
+                // Instantly call audio play before any state changes
+                try {
+                  window.__playWeddingMusic?.();
+                } catch (e) {
+                  console.warn(e);
+                }
                 if (!opening) {
                   setOpening(true);
                   onOpen();
@@ -1331,7 +1337,7 @@ function MusicPlayer({ shouldPlay, onToggle, isMuted }) {
   const containerRef = React.useRef(null);
   const checkIntervalRef = React.useRef(null);
   const [isPlaying, setIsPlaying] = React.useState(false);
-  const pendingPlayRef = React.useRef(false);
+  const hasUserTriggeredRef = React.useRef(false);
 
   const START_TIME = 64; // 1:04 in seconds (64s)
   const END_TIME = 300;  // 5:00 in seconds (300s)
@@ -1361,7 +1367,7 @@ function MusicPlayer({ shouldPlay, onToggle, isMuted }) {
   };
 
   const safePlay = () => {
-    pendingPlayRef.current = true;
+    hasUserTriggeredRef.current = true;
     if (playerRef.current && typeof playerRef.current.playVideo === "function") {
       executePlay(playerRef.current);
     }
@@ -1385,12 +1391,12 @@ function MusicPlayer({ shouldPlay, onToggle, isMuted }) {
       if (playerRef.current || !window.YT || !window.YT.Player) return;
       try {
         playerRef.current = new window.YT.Player("youtube-audio-player", {
-          height: "100%",
-          width: "100%",
+          height: "200",
+          width: "200",
           videoId: "ehP54Fsk_4g",
           playerVars: {
             autoplay: 1,
-            mute: 1, // Pre-buffer silently immediately so playback is instantaneous upon seal click
+            mute: 1, // Start muted with 1px visible size so YouTube iframe initializes immediately
             controls: 0,
             disablekb: 1,
             fs: 0,
@@ -1399,24 +1405,14 @@ function MusicPlayer({ shouldPlay, onToggle, isMuted }) {
             playsinline: 1,
             rel: 0,
             start: START_TIME,
+            origin: window.location.origin,
           },
           events: {
             onReady: (event) => {
               try {
-                // Seek to exactly 1:04 (64s)
                 event.target.seekTo(START_TIME, true);
-                if (pendingPlayRef.current || shouldPlay) {
+                if (hasUserTriggeredRef.current || shouldPlay) {
                   executePlay(event.target);
-                } else {
-                  // Preload buffer silently then pause at 1:04
-                  event.target.mute();
-                  event.target.playVideo();
-                  setTimeout(() => {
-                    if (!pendingPlayRef.current) {
-                      event.target.pauseVideo();
-                      event.target.seekTo(START_TIME, true);
-                    }
-                  }, 800);
                 }
               } catch (e) {
                 console.warn(e);
@@ -1424,7 +1420,7 @@ function MusicPlayer({ shouldPlay, onToggle, isMuted }) {
             },
             onStateChange: (event) => {
               if (event.data === window.YT.PlayerState.PLAYING) {
-                if (pendingPlayRef.current || shouldPlay) {
+                if (hasUserTriggeredRef.current || shouldPlay) {
                   setIsPlaying(true);
                 }
                 if (!checkIntervalRef.current) {
@@ -1491,56 +1487,59 @@ function MusicPlayer({ shouldPlay, onToggle, isMuted }) {
 
   return (
     <>
-      {/* Hidden YouTube IFrame */}
+      {/* 
+        Active YouTube IFrame Container:
+        Using 1px x 1px with clip-path/opacity ensures mobile & desktop browsers 
+        do NOT treat it as background/throttled, allowing instant unmuting on click!
+      */}
       <div
         ref={containerRef}
+        aria-hidden="true"
         style={{
           position: "fixed",
-          bottom: "-200px",
-          right: "-200px",
-          width: "200px",
-          height: "200px",
-          opacity: 0.001,
+          top: "0px",
+          left: "0px",
+          width: "1px",
+          height: "1px",
+          opacity: 0.01,
           pointerEvents: "none",
-          zIndex: -50,
+          zIndex: 1,
           overflow: "hidden",
         }}
       >
         <div id="youtube-audio-player" />
       </div>
 
-      {/* Floating Audio Toggle Pill */}
+      {/* Luxury Circular Music Toggle Button */}
       <motion.button
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.5, duration: 0.6 }}
-        whileHover={{ scale: 1.08 }}
-        whileTap={{ scale: 0.94 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
         onClick={onToggle}
         aria-label={isPlaying && !isMuted ? "Pause Wedding Song" : "Play Wedding Song"}
-        className="fixed bottom-5 right-5 z-40 flex items-center gap-2 rounded-full px-3.5 py-2.5 shadow-gold backdrop-blur-md cursor-pointer border border-gold/40 text-gold bg-emerald-ink/90 transition-all select-none"
+        className="fixed bottom-6 right-6 z-40 flex h-13 w-13 items-center justify-center rounded-full shadow-luxe backdrop-blur-md cursor-pointer border-2 border-gold/60 text-gold bg-[#0d2e1c]/90 transition-all select-none group"
+        style={{
+          boxShadow: isPlaying && !isMuted 
+            ? "0 0 20px rgba(212, 175, 55, 0.45), 0 4px 12px rgba(0,0,0,0.5)" 
+            : "0 4px 12px rgba(0,0,0,0.5)",
+        }}
       >
         {isPlaying && !isMuted ? (
-          <>
-            <motion.span
+          <div className="relative flex items-center justify-center">
+            {/* Spinning Golden Music Ring */}
+            <motion.div
               animate={{ rotate: 360 }}
-              transition={{ repeat: Infinity, duration: 6, ease: "linear" }}
-              className="flex items-center justify-center text-gold"
-            >
-              <IconMusic className="h-4 w-4" />
-            </motion.span>
-            <span className="text-[0.68rem] tracking-[0.2em] uppercase font-semibold text-gold-soft hidden sm:inline">
-              Music On
-            </span>
-            <IconVolume2 className="h-3.5 w-3.5 text-gold-soft" />
-          </>
+              transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
+              className="absolute -inset-1 rounded-full border border-dashed border-gold/60"
+            />
+            <IconMusic className="h-5 w-5 text-gold animate-pulse" />
+          </div>
         ) : (
-          <>
-            <IconVolumeX className="h-4 w-4 text-ivory/70" />
-            <span className="text-[0.68rem] tracking-[0.2em] uppercase font-medium text-ivory/70 hidden sm:inline">
-              Play Music
-            </span>
-          </>
+          <div className="relative flex items-center justify-center">
+            <IconVolumeX className="h-5 w-5 text-ivory/60 group-hover:text-gold transition-colors" />
+          </div>
         )}
       </motion.button>
     </>
