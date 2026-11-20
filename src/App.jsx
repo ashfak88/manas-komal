@@ -198,23 +198,33 @@ function AuroraBackground({ className = "", intensity = 1 }) {
       style={{ opacity: intensity, transform: "translateZ(0)", willChange: "transform" }}
     >
       <div
-        className="absolute -top-1/3 left-[-20%] h-[80%] w-[90%] rounded-full blur-2xl"
+        className="absolute -top-1/3 left-[-20%] h-[80%] w-[90%] rounded-full blur-3xl"
         style={{
-          background: "radial-gradient(circle at 50% 50%, oklch(0.55 0.13 160 / 0.4), transparent 65%)",
+          background: "radial-gradient(circle at 50% 50%, oklch(0.55 0.13 160 / 0.55), transparent 65%)",
+          animation: "aurora-drift 18s ease-in-out infinite",
           transform: "translateZ(0)",
         }}
       />
       <div
-        className="absolute top-[10%] right-[-25%] h-[75%] w-[85%] rounded-full blur-2xl"
+        className="absolute top-[10%] right-[-25%] h-[75%] w-[85%] rounded-full blur-3xl"
         style={{
-          background: "radial-gradient(circle at 50% 50%, oklch(0.8 0.12 85 / 0.35), transparent 65%)",
+          background: "radial-gradient(circle at 50% 50%, oklch(0.8 0.12 85 / 0.5), transparent 65%)",
+          animation: "aurora-drift 24s ease-in-out infinite reverse",
           transform: "translateZ(0)",
         }}
       />
       <div
-        className="absolute inset-0 opacity-40"
+        className="absolute bottom-[-25%] left-[10%] h-[70%] w-[80%] rounded-full blur-3xl"
         style={{
-          backgroundImage: "radial-gradient(oklch(0.98 0.02 92 / 0.3) 1px, transparent 1px)",
+          background: "radial-gradient(circle at 50% 50%, oklch(0.52 0.16 18 / 0.4), transparent 65%)",
+          animation: "aurora-drift 30s ease-in-out infinite",
+          transform: "translateZ(0)",
+        }}
+      />
+      <div
+        className="absolute inset-0 mix-blend-soft-light"
+        style={{
+          backgroundImage: "radial-gradient(oklch(0.98 0.02 92 / 0.35) 1px, transparent 1px)",
           backgroundSize: "22px 22px",
         }}
       />
@@ -1221,11 +1231,11 @@ function EnvelopeOpener({ onOpen }) {
             willChange: "transform",
           }}
           animate={opening ? { x: `${direction * 105}%` } : { x: 0 }}
-          transition={{ duration: 0.85, ease: [0.32, 0.72, 0, 1] }}
+          transition={{ duration: 0.95, ease: [0.32, 0.72, 0, 1] }}
         >
-          <AuroraBackground intensity={0.4} />
+          <AuroraBackground intensity={0.65} />
           <div
-            className="pointer-events-none absolute inset-0 opacity-15"
+            className="pointer-events-none absolute inset-0 opacity-25"
             style={{
               backgroundImage: "url('/images/mandala-texture.jpg')",
               backgroundSize: "cover",
@@ -1241,7 +1251,7 @@ function EnvelopeOpener({ onOpen }) {
           />
         </motion.div>
       ))}
-      <FloatingPetals count={6} />
+      <FloatingPetals count={8} />
       <AnimatePresence>
         {!opening && (
           <motion.div
@@ -1252,12 +1262,39 @@ function EnvelopeOpener({ onOpen }) {
             transition={{ duration: 0.3, ease: "easeOut" }}
             style={{ willChange: "transform, opacity" }}
           >
-            <span className="text-gold/80 text-[0.55rem] tracking-[0.5em] uppercase">
+            <span
+              className="text-[0.6rem] tracking-[0.5em] uppercase font-medium"
+              style={{
+                color: "#e8c977",
+                textShadow: "0 2px 8px rgba(0,0,0,0.7)",
+              }}
+            >
               A wedding invitation
             </span>
-            <h1 className="text-gold-foil mt-5 text-4xl sm:text-5xl leading-tight font-bold tracking-wide" style={{ fontFamily: "'Cinzel Decorative', serif", fontWeight: 700 }}>
+            <h1
+              className="mt-5 text-4xl sm:text-5xl leading-tight font-bold tracking-wide"
+              style={{
+                fontFamily: "'Cinzel Decorative', serif",
+                fontWeight: 700,
+                backgroundImage: "var(--gradient-gold)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                color: "transparent",
+                filter: "drop-shadow(0 2px 14px rgba(212, 175, 55, 0.65))",
+              }}
+            >
               {WEDDING_DATA.groom.name}
-              <span className="text-gold/90 mx-2 text-2xl sm:text-3xl font-normal" style={{ fontFamily: "'Alex Brush', cursive" }}>&</span>
+              <span
+                className="mx-2 text-2xl sm:text-3xl font-normal"
+                style={{
+                  fontFamily: "'Alex Brush', cursive",
+                  color: "#f6dd9a",
+                  WebkitTextFillColor: "#f6dd9a",
+                  filter: "none",
+                }}
+              >
+                &
+              </span>
               {WEDDING_DATA.bride.name}
             </h1>
             <span className="rule-gold mt-6 w-32" />
@@ -1275,14 +1312,14 @@ function EnvelopeOpener({ onOpen }) {
                 }
               }}
               whileTap={{ scale: 0.94 }}
-              whileHover={{ scale: 1.04 }}
+              whileHover={{ scale: 1.05 }}
               className="group relative mt-12 grid h-28 w-28 place-items-center cursor-pointer select-none"
               aria-label="Open the invitation"
               style={{ transform: "translateZ(0)" }}
             >
               <motion.span
-                className="border-gold/40 absolute inset-0 rounded-full border pointer-events-none"
-                animate={{ scale: [1, 1.2, 1], opacity: [0.6, 0, 0.6] }}
+                className="border-gold/50 absolute inset-0 rounded-full border pointer-events-none"
+                animate={{ scale: [1, 1.25, 1], opacity: [0.7, 0, 0.7] }}
                 transition={{
                   repeat: Infinity,
                   duration: 2.8,
@@ -1290,7 +1327,7 @@ function EnvelopeOpener({ onOpen }) {
                 }}
               />
               <motion.span
-                className="shadow-gold grid h-20 w-20 place-items-center rounded-full pointer-events-none"
+                className="shadow-gold grid h-20 w-20 place-items-center rounded-full pointer-events-none shadow-[0_0_25px_rgba(212,175,55,0.65)]"
                 style={{ backgroundImage: "var(--gradient-gold)" }}
                 animate={{ y: [0, -3, 0] }}
                 transition={{
@@ -1299,16 +1336,20 @@ function EnvelopeOpener({ onOpen }) {
                   ease: "easeInOut",
                 }}
               >
-                <span className="font-medium text-emerald-ink text-2xl tracking-normal flex items-center justify-center" style={{ fontFamily: "'Cinzel Decorative', serif" }}>
+                <span className="font-medium text-emerald-ink text-2xl tracking-normal flex items-center justify-center font-display" style={{ fontFamily: "'Cinzel Decorative', serif" }}>
                   <span>{WEDDING_DATA.groom.name[0]}</span>
-                  <span className="text-base mx-0.5 opacity-75" style={{ fontFamily: "'Alex Brush', cursive" }}>&</span>
+                  <span className="text-base mx-0.5 opacity-80" style={{ fontFamily: "'Alex Brush', cursive" }}>&</span>
                   <span>{WEDDING_DATA.bride.name[0]}</span>
                 </span>
               </motion.span>
             </motion.button>
             <motion.p
-              className="text-ivory/60 mt-8 text-[0.6rem] tracking-[0.4em] uppercase"
-              animate={{ opacity: [0.5, 0.9, 0.5] }}
+              className="mt-8 text-[0.62rem] tracking-[0.4em] uppercase font-light"
+              style={{
+                color: "#e8c977",
+                textShadow: "0 1px 6px rgba(0,0,0,0.8)",
+              }}
+              animate={{ opacity: [0.55, 1, 0.55] }}
               transition={{ repeat: Infinity, duration: 2.5 }}
             >
               Tap the seal to open
@@ -1333,182 +1374,77 @@ function ScrollProgress() {
 }
 
 function MusicPlayer({ shouldPlay, onToggle, isMuted }) {
-  const playerRef = React.useRef(null);
-  const containerRef = React.useRef(null);
-  const checkIntervalRef = React.useRef(null);
+  const audioRef = React.useRef(null);
   const [isPlaying, setIsPlaying] = React.useState(false);
-  const hasUserTriggeredRef = React.useRef(false);
 
-  const START_TIME = 64; // 1:04 in seconds (64s)
-  const END_TIME = 300;  // 5:00 in seconds (300s)
-
-  const executePlay = (player) => {
-    if (!player) return;
+  // Directly play audio on user interaction
+  const playAudio = () => {
+    if (!audioRef.current) return;
     try {
-      if (typeof player.unMute === "function") {
-        player.unMute();
-      }
-      if (typeof player.setVolume === "function") {
-        player.setVolume(100);
-      }
-      if (typeof player.seekTo === "function") {
-        const cur = player.getCurrentTime?.();
-        if (cur === undefined || cur < START_TIME || cur >= END_TIME) {
-          player.seekTo(START_TIME, true);
-        }
-      }
-      if (typeof player.playVideo === "function") {
-        player.playVideo();
-        setIsPlaying(true);
+      audioRef.current.currentTime = 0;
+      audioRef.current.muted = false;
+      const playPromise = audioRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsPlaying(true);
+          })
+          .catch((err) => {
+            console.warn("Audio play prevented:", err);
+          });
       }
     } catch (e) {
-      console.warn("YouTube play attempt:", e);
+      console.warn("Audio play error:", e);
     }
   };
 
-  const safePlay = () => {
-    hasUserTriggeredRef.current = true;
-    if (playerRef.current && typeof playerRef.current.playVideo === "function") {
-      executePlay(playerRef.current);
+  // Pause audio
+  const pauseAudio = () => {
+    if (!audioRef.current) return;
+    try {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } catch (e) {
+      console.warn("Audio pause error:", e);
     }
   };
 
   React.useEffect(() => {
-    // Expose direct trigger on window for immediate synchronous user gesture handling
+    // Expose global trigger for instant play inside the wax seal click handler
     window.__playWeddingMusic = () => {
-      safePlay();
+      playAudio();
     };
 
-    // Ensure YouTube IFrame Player API is loaded
-    if (!window.YT) {
-      const tag = document.createElement("script");
-      tag.src = "https://www.youtube.com/iframe_api";
-      const firstScriptTag = document.getElementsByTagName("script")[0];
-      firstScriptTag?.parentNode?.insertBefore(tag, firstScriptTag);
+    // Preload audio
+    if (audioRef.current) {
+      audioRef.current.load();
     }
-
-    const initPlayer = () => {
-      if (playerRef.current || !window.YT || !window.YT.Player) return;
-      try {
-        playerRef.current = new window.YT.Player("youtube-audio-player", {
-          height: "200",
-          width: "200",
-          videoId: "ehP54Fsk_4g",
-          playerVars: {
-            autoplay: 1,
-            mute: 1, // Start muted with 1px visible size so YouTube iframe initializes immediately
-            controls: 0,
-            disablekb: 1,
-            fs: 0,
-            loop: 1,
-            modestbranding: 1,
-            playsinline: 1,
-            rel: 0,
-            start: START_TIME,
-            origin: window.location.origin,
-          },
-          events: {
-            onReady: (event) => {
-              try {
-                event.target.seekTo(START_TIME, true);
-                if (hasUserTriggeredRef.current || shouldPlay) {
-                  executePlay(event.target);
-                }
-              } catch (e) {
-                console.warn(e);
-              }
-            },
-            onStateChange: (event) => {
-              if (event.data === window.YT.PlayerState.PLAYING) {
-                if (hasUserTriggeredRef.current || shouldPlay) {
-                  setIsPlaying(true);
-                }
-                if (!checkIntervalRef.current) {
-                  checkIntervalRef.current = setInterval(() => {
-                    try {
-                      const current = playerRef.current?.getCurrentTime();
-                      if (current !== undefined && (current >= END_TIME || current < START_TIME - 2)) {
-                        playerRef.current.seekTo(START_TIME, true);
-                      }
-                    } catch (e) {
-                      console.warn(e);
-                    }
-                  }, 400);
-                }
-              } else if (
-                event.data === window.YT.PlayerState.PAUSED ||
-                event.data === window.YT.PlayerState.ENDED
-              ) {
-                if (event.data === window.YT.PlayerState.ENDED) {
-                  playerRef.current?.seekTo(START_TIME, true);
-                  playerRef.current?.playVideo();
-                }
-              }
-            },
-          },
-        });
-      } catch (err) {
-        console.warn("Error creating YT Player:", err);
-      }
-    };
-
-    if (window.YT && window.YT.Player) {
-      initPlayer();
-    } else {
-      const prevReady = window.onYouTubeIframeAPIReady;
-      window.onYouTubeIframeAPIReady = () => {
-        if (typeof prevReady === "function") prevReady();
-        initPlayer();
-      };
-    }
-
-    return () => {
-      if (checkIntervalRef.current) clearInterval(checkIntervalRef.current);
-      try {
-        playerRef.current?.destroy();
-      } catch (e) {}
-    };
   }, []);
 
-  // Sync play/pause with shouldPlay and isMuted
+  // Sync state with parent toggles
   React.useEffect(() => {
-    if (!playerRef.current) return;
-    try {
-      if (shouldPlay && !isMuted) {
-        safePlay();
-      } else if (typeof playerRef.current.pauseVideo === "function") {
-        playerRef.current.pauseVideo();
-        setIsPlaying(false);
+    if (!audioRef.current) return;
+    if (shouldPlay && !isMuted) {
+      if (audioRef.current.paused) {
+        playAudio();
       }
-    } catch (e) {
-      console.warn(e);
+    } else {
+      if (!audioRef.current.paused) {
+        pauseAudio();
+      }
     }
   }, [shouldPlay, isMuted]);
 
   return (
     <>
-      {/* 
-        Active YouTube IFrame Container:
-        Using 1px x 1px with clip-path/opacity ensures mobile & desktop browsers 
-        do NOT treat it as background/throttled, allowing instant unmuting on click!
-      */}
-      <div
-        ref={containerRef}
-        aria-hidden="true"
-        style={{
-          position: "fixed",
-          top: "0px",
-          left: "0px",
-          width: "1px",
-          height: "1px",
-          opacity: 0.01,
-          pointerEvents: "none",
-          zIndex: 1,
-          overflow: "hidden",
-        }}
-      >
-        <div id="youtube-audio-player" />
-      </div>
+      {/* Native HTML5 Audio Element for instant playback with no network lag or iframe delay */}
+      <audio
+        ref={audioRef}
+        src="/audio/wedding-music.mp3"
+        preload="auto"
+        loop
+        playsInline
+      />
 
       {/* Luxury Circular Music Toggle Button */}
       <motion.button
